@@ -13,3 +13,12 @@ class Service(db.Model):
     price = db.Column(db.float, nullable=False)
 
     company = db.relationship("Company", back_populates='services')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'companyId': self.company_id,
+            'name': self.name,
+            'description': self.description,
+            'price': self.price,
+        }

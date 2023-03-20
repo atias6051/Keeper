@@ -15,3 +15,16 @@ class Customer(db.Model):
     state = db.Column(db.String(), nullable=False)
 
     comapny = db.relationship("Company",back_populates='services')
+    estimates = db.relationship("Estimate",back_populates='customer')
+
+    def to_dict(self):
+        return{
+            'id': self.id,
+            'companyId': self.company_id,
+            'name': self.name,
+            'email': self.email,
+            'phone': self.phone,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+        }

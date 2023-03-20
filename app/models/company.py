@@ -20,3 +20,23 @@ class Company(db.Model):
 
     users = db.relationship("User", back_populates='company', cascade="all,delete")
     services = db.relationship("Service", back_populates='company', cascade="all,delete")
+    customers = db.relationship("Customer", back_populates='company', cascade="all,delete")
+    invites = db.relationship("UserInvite", back_populates='company', cascade="all,delete")
+    estimates = db.relationship("Estimate", back_populates='company', cascade="all,delete")
+
+    def to_dict_admin(self):
+        return {
+            'id': self.id,
+            'name': self,
+            'phone': self,
+            'address': self,
+            'city': self,
+            'state': self,
+            'logoUrl': self,
+            'termsConditions': self,
+            'users': [user.to_dict() for user in self.users],
+            'services': [service.to_dict() for service in self.services],
+            'customers': [customer.to_dict() for customer in self.customers],
+            'invites': [invite.to_dict() for invite in self.invites],
+            'estimates': [estimate.to_dict() for estimate in self.estimates]
+        }

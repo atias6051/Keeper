@@ -18,8 +18,8 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.Integer,nullable=False)
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('companies.id')),nullable=False)
 
-    comapny = db.relationship("Company",back_populates='users')
-    estimates = db.relationship("Estimate", back_populates='users')
+    comapny = db.relationship("Company", back_populates='users')
+    estimates = db.relationship("Estimate", back_populates='owner')
 
     @property
     def password(self):
@@ -35,6 +35,10 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'firstName': self,
+            'lastName': self,
+            'admin': self,
+            'phone': self,
+            'companyId': self,
         }

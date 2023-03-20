@@ -13,3 +13,19 @@ class Estimate(db.Model):
     discount = db.Column(db.float, nullable=False)
     date = db.Column(db.String(), nullable=False)
     is_invoice = db.Column(db.Boolean, nullable=False, default=False)
+
+    comapny = db.relationship("Company",back_populates='estimates')
+    owner = db.relationship("User",back_populates='estimates')
+    customer = db.relationship("Customer",back_populates='estimates')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'ownerId': self.owner_id,
+            'companyId': self.comapny_id,
+            'customerId': self.customer_id,
+            'services': self.services,
+            'discount': self.discount,
+            'date': self.date,
+            'isInvoice': self.is_invoice,
+        }
