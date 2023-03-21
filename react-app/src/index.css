@@ -1,1 +1,11 @@
-/* TODO Add site wide styles */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* :root {
+    --drak: #2c3333;
+    --semi-drak: #2e4f4f;
+    --light: #0e8388;
+    --lightest: #cbe4de;
+  } */
