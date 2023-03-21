@@ -1,6 +1,9 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
 from app.models import User, Company, db
+# from app.forms import NewCompanyForm
+from ..forms.new_company_form import NewCompanyForm
+from flask_login import current_user, login_user, logout_user
 
 company_routes = Blueprint('company', __name__)
 
@@ -16,6 +19,7 @@ def get_company():
         return jsonify(res)
 
 @company_routes.route('',methods=['PUT'])
+@login_required
 def update_company_info():
     comp = Company.query.get(current_user.company_id)
     if not current_user.admin:
@@ -32,3 +36,53 @@ def update_company_info():
     db.session.commit()
 
     return jsonify(comp.to_dict_admin())
+
+@company_routes.route('',methods=['POST'])
+def create_new_company():
+    form = NewCompanyForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        company = Company(
+            name = form.name.data,
+            phone = form.business_phone.data,
+            address = form.address.data,
+            city = form.city.data,
+            state = form.state.data,
+            # logo_url = "https://i.imgur.com/liRLhba.png"
+            logo_url = form.logo_url.data if form.logo_url.data else "https://i.imgur.com/liRLhba.png"
+        )
+        db.session.add(company)
+        db.session.flush()
+
+        user = User(
+            first_name = form.first_name.data,
+            last_name = form.last_name.data,
+            email = form.email.data,
+            password = form.password.data,
+            phone = form.phone.data,
+            admin = True,
+            company_id = company.id
+        )
+        db.session.add(user)
+        db.session.commit()
+
+        user_login = User.query.filter(User.email == form.data['email']).first()
+        login_user(user_login)
+        return jsonify({
+            "user": user_login.to_dict(),
+            "company": company.to_dict_admin()
+        })
+        # return jsonify(company.to_dict())
+    return jsonify({'errors': form.errors})
+
+@company_routes.route('',methods=['DELETE'])
+@login_required
+def delete_company():
+    if not current_user.admin:
+        return jsonify({"message":"Forbidden! Only admin can delete the business!",
+                "statuscode": "404"}),404
+    comp = Company.query.get(current_user.company_id)
+    logout_user()
+    db.session.delete(comp)
+    db.session.commit()
+    return {"message": "Business and user account successfully deleted"}

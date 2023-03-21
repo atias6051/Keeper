@@ -10,6 +10,11 @@ def user_exists(form, field):
     if user:
         raise ValidationError('Email address is already in use.')
 
+# def validate_city(self, field):
+#         valid_cities = ["New York", "Los Angeles", "Chicago"]
+#         if field.data not in valid_cities:
+#             raise ValidationError("Invalid city name")
+
 class NewCompanyForm(FlaskForm):
     first_name = StringField('first_name', validators=[DataRequired()])
     last_name = StringField('last_name', validators=[DataRequired()])

@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .seeds import seed_commands
 from .config import Config
 from .api.company_routes import company_routes
+from .api.customer_routes import customer_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -30,6 +31,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(company_routes, url_prefix='/api/company')
+app.register_blueprint(customer_routes, url_prefix='/api/customers')
 db.init_app(app)
 Migrate(app, db)
 
