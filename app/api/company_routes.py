@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
 from app.models import User, Company, db
-# from app.forms import NewCompanyForm
 from ..forms.new_company_form import NewCompanyForm
 from flask_login import current_user, login_user, logout_user
 
@@ -48,7 +47,6 @@ def create_new_company():
             address = form.address.data,
             city = form.city.data,
             state = form.state.data,
-            # logo_url = "https://i.imgur.com/liRLhba.png"
             logo_url = form.logo_url.data if form.logo_url.data else "https://i.imgur.com/liRLhba.png"
         )
         db.session.add(company)
@@ -72,7 +70,6 @@ def create_new_company():
             "user": user_login.to_dict(),
             "company": company.to_dict_admin()
         })
-        # return jsonify(company.to_dict())
     return jsonify({'errors': form.errors})
 
 @company_routes.route('',methods=['DELETE'])
