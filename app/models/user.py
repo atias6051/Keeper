@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.Integer,nullable=False)
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('companies.id')),nullable=False)
 
-    comapny = db.relationship("Company", back_populates='users')
+    company = db.relationship("Company", back_populates='users')
     estimates = db.relationship("Estimate", back_populates='owner')
 
     @property
@@ -36,9 +36,9 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'email': self.email,
-            'firstName': self,
-            'lastName': self,
-            'admin': self,
-            'phone': self,
-            'companyId': self,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'admin': self.admin,
+            'phone': self.phone,
+            'companyId': self.company_id,
         }

@@ -9,12 +9,12 @@ class Customer(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('companies.id')),nullable=False)
     name = db.Column(db.String(), nullable=False)
     email = db.Column(db.String(255), nullable=False)
-    phone = db.Column(db.Integer, nullable=False)
+    phone = db.Column(db.String(10), nullable=False)
     address = db.Column(db.String(), nullable=False)
     city = db.Column(db.String(), nullable=False)
     state = db.Column(db.String(), nullable=False)
 
-    comapny = db.relationship("Company",back_populates='services')
+    company = db.relationship("Company",back_populates='customers')
     estimates = db.relationship("Estimate",back_populates='customer')
 
     def to_dict(self):

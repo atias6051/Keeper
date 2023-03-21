@@ -10,11 +10,11 @@ class Estimate(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('companies.id')),nullable=False)
     customer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('customers.id')),nullable=False)
     services = db.Column(db.Text)
-    discount = db.Column(db.float, nullable=False)
+    discount = db.Column(db.Float, nullable=False)
     date = db.Column(db.String(), nullable=False)
     is_invoice = db.Column(db.Boolean, nullable=False, default=False)
 
-    comapny = db.relationship("Company",back_populates='estimates')
+    company = db.relationship("Company",back_populates='estimates')
     owner = db.relationship("User",back_populates='estimates')
     customer = db.relationship("Customer",back_populates='estimates')
 
@@ -22,7 +22,7 @@ class Estimate(db.Model):
         return {
             'id': self.id,
             'ownerId': self.owner_id,
-            'companyId': self.comapny_id,
+            'companyId': self.company_id,
             'customerId': self.customer_id,
             'services': self.services,
             'discount': self.discount,

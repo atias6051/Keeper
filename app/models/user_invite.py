@@ -14,9 +14,9 @@ class UserInvite(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('companies.id')),nullable=False)
     first_name = db.Column(db.String(255),nullable=False)
     last_name = db.Column(db.String(255),nullable=False)
-    active = db.Colum(db.Boolean,nullable=False,default=True)
+    active = db.Column(db.Boolean,nullable=False,default=True)
 
-    comapny = db.relationship("Company",back_populates='invites')
+    company = db.relationship("Company",back_populates='invites')
 
     @property
     def key(self):

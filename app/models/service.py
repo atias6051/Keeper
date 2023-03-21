@@ -10,7 +10,7 @@ class Service(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('companies.id')), nullable=False)
     name = db.Column(db.String(255),nullable=False)
     description = db.Column(db.Text,nullable=False)
-    price = db.Column(db.float, nullable=False)
+    price = db.Column(db.Float, nullable=False)
 
     company = db.relationship("Company", back_populates='services')
 
