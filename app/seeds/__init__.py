@@ -4,6 +4,7 @@ from .companies import seed_companies, undo_companies
 from .customers import seed_customers, undo_customers
 from .services import seed_services, undo_services
 from .estimates import seed_estimates, undo_estimates
+from .invites import seed_invites, undo_invites
 
 from app.models.db import db, environment, SCHEMA
 
@@ -23,10 +24,12 @@ def seed():
         undo_estimates()
         undo_customers()
         undo_services()
+        undo_invites()
         undo_users()
         undo_companies()
     seed_companies()
     seed_users()
+    seed_invites()
     seed_services()
     seed_customers()
     seed_estimates()
@@ -37,6 +40,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_invites()
     undo_companies()
     undo_services()
     undo_customers()

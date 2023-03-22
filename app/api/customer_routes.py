@@ -10,7 +10,7 @@ customer_routes = Blueprint('customers', __name__)
 @customer_routes.route('')
 @login_required
 def get_all_customer():
-    res = Customer.query.filter(Customer.company_id == current_user.company_id).all()
+    res = Customer.query.filter(Customer.company_id == current_user.company_id).order_by(Customer.name).all()
     return jsonify([customer.to_dict() for customer in res])
 
 @customer_routes.route('',methods=['POST'])
@@ -32,6 +32,16 @@ def create_customer():
         db.session.commit()
         return jsonify(customer.to_dict())
     return jsonify({'errors': form.errors})
+
+@customer_routes.route('/<int:id>')
+@login_required
+def get_single_customer(id):
+    customer = Customer.query.get(int(id))
+    if not customer:
+        return jsonify({"message":"Customer not found","statuscode":404}),404
+    if customer.company_id != current_user.company_id:
+        return jsonify({"message":"Customer is not in your company data","statuscode":404}),404
+    return jsonify(customer.to_dict())
 
 @customer_routes.route('/<int:id>',methods=['PUT'])
 @login_required

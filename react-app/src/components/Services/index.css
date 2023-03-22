@@ -1,0 +1,14 @@
+#all-services{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gray);
+    width: 82%;
+}
+
+#services-navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: var(--lightest);
+    box-shadow: 0 2px 12px -2px var(--drak);
+}

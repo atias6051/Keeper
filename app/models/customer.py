@@ -27,4 +27,5 @@ class Customer(db.Model):
             'address': self.address,
             'city': self.city,
             'state': self.state,
+            'estimates': [est.to_dict() for est in self.estimates]
         }

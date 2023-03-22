@@ -6,6 +6,18 @@
   display: none;
 }
 
-/* #nav-bar{
-  background-color: var(--drak);
-} */
+#nav-bar{
+  background-color: var(--semi-drak);
+  color: white;
+  padding: 10px 30px;
+  list-style: none;
+  border-bottom: 1px solid var(--lightest);
+}
+
+#navbar-logo{
+  height: 60px;
+}
+
+#navbar-login{
+  padding: 5px 10px;
+}

@@ -5,6 +5,12 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import SideBar from "./components/SideBar";
+import SignUpPage from "./components/SingUpPage";
+import Customers from "./components/Customers";
+import Dashboard from "./components/Dashboard";
+import Services from "./components/Services";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -16,16 +22,33 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
+      <Switch>
+        <Route exact path="/">
+          <SignUpPage/>
+        </Route>
+        <Route path='/dashboard'>
+
+        {isLoaded && (
+          <div id="main-page">
+            <SideBar />
+            <Switch>
+              <Route exact path="/dashboard" >
+                <Dashboard />
+              </Route>
+              <Route path="/signup">
+                <SignupFormPage />
+              </Route>
+              <Route path="/dashboard/customers">
+                <Customers />
+              </Route>
+              <Route path="/dashboard/services">
+                <Services />
+              </Route>
+            </Switch>
+          </div>
+        )}
+        </Route>
+      </Switch>
     </>
   );
 }
