@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Switch, Route } from 'react-router-dom';
-import { getCustomers } from '../../store/customer';
+import { NavLink, Switch, Route, useHistory, useLocation } from 'react-router-dom';
+import { getCustomers, clearSingle } from '../../store/customer';
 import CustomerTile from './CustomerTile';
 import CustomerInfo from '../CustomerInfo';
 import './index.css'
 import TestComp from '../TestComp';
+import NewCustomerForm from '../NewCustomerForm';
 
 export default function Customers(){
     const customers = useSelector(state=>state.customer.customers)
+    const singleCustomer = useSelector(state=>state.customer.singleCustomer)
     const dispatch = useDispatch()
+    const history = useHistory()
+    const location = useLocation()
     const [sortedCustomers,setSortedCustomers] = useState(null)
 
     useEffect(() => {
         dispatch(getCustomers());
-      }, [dispatch]);
+    }, [dispatch]);
+
+    useEffect(()=>{
+        if(location.pathname === '/dashboard/customers'){
+            dispatch(clearSingle())
+            dispatch(getCustomers())
+        }
+    },[location])
 
     useEffect(()=>{
         if(customers){
@@ -28,9 +39,10 @@ export default function Customers(){
                 acc[letter].sort((a, b) => a.name.localeCompare(b.name))
                 return acc
             }, {})
-            setSortedCustomers(()=>groupedCustomers)
+            setSortedCustomers(() => groupedCustomers)
         }
-    },[customers])
+    },[customers,location])
+    // },[customers,singleCustomer,location])
 
 
 
@@ -41,7 +53,7 @@ export default function Customers(){
                     <input className="search-bar" type="text"></input>
                     <i class="fa-solid fa-magnifying-glass marg15-l"></i>
                 </div>
-                <button className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Customer</button>
+                <button onClick={()=>history.push('/dashboard/customers/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Customer</button>
             </div>
             <Switch>
                 <Route exact path="/dashboard/customers/">
@@ -57,6 +69,9 @@ export default function Customers(){
                     </div>
                   ))}
                 </div>
+                </Route>
+                <Route path="/dashboard/customers/new">
+                    <NewCustomerForm />
                 </Route>
                 <Route path="/dashboard/customers/:id">
                     <CustomerInfo/>

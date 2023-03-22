@@ -20,7 +20,14 @@
     background-color: white;
     box-shadow: 2px 2px 12px -2px var(--drak);
     overflow-y: scroll;
+}
 
+.tile-display:-webkit-scrollbar-thumb {
+    background-color: #ff0000;
+    border-radius: 15px;
+}
+.tile-display:-webkit-scrollbar-track {
+    background-color: #051eff;
 }
 
 .customer-tile{

@@ -13,11 +13,21 @@ export default function SignUpPage(){
         }
     },[user])
     return (
-        <div>
-            <h2>Hello!</h2>
-            <h2>Hello!</h2>
-            <h2>Hello!</h2>
-            <h2>Hello!</h2>
-        </div>
+        <section id="sing-log-section">
+            <h1>Welcome to Keeper</h1>
+            <h2>Small business bookkeeping and team management</h2>
+            <div id='signup-cards-container'>
+                <div className='sing-log-card base-1'>
+                    <button>Continue to sign up</button>
+                </div>
+                <div className='sing-log-card base-2'>
+
+                    <button>Start your company account</button>
+                </div>
+                <div className='sing-log-card base-1'>
+                    <button>Log in</button>
+                </div>
+            </div>
+        </section>
     )
 }

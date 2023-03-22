@@ -1,0 +1,29 @@
+#delete-modal-container{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+
+    font-size: 1.5rem;
+    /* border-radius: 15px;
+    border: 1px solid red; */
+}
+#delete-modal-container span{
+    font-size: 1rem;
+}
+
+.delete-buttons button{
+    margin: 15px;
+}
+
+.keep-button{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: var(--semi-drak);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.keep-button:hover{
+    color: var(--dark);
+    background-color: white;
+}

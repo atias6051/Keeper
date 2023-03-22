@@ -1,0 +1,33 @@
+#sing-log-section{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    height: 100vh;
+    background: linear-gradient(to bottom right, #cbe4de, #39bcc091);
+    padding: 40px;
+    color: var(--drak);
+}
+
+#signup-cards-container{
+    display: flex;
+    /* gap: 5px; */
+}
+
+.sing-log-card{
+    /* background-color: rgb(255, 255, 255); */
+    position: relative;
+    background: linear-gradient(to bottom, #ffffff, #f7efef91);
+    border-radius: 13px;
+    margin: 15px;
+    width: 20vw;
+    height: 20vh;
+    border: 1px solid var(--drak);
+}
+
+.base-2{
+    flex-basis: 2;
+    flex-grow: 1;
+}
+.base-1{
+    flex-basis: 2;
+}
