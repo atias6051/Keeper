@@ -10,7 +10,7 @@ def seed_users():
         first_name='Mr',
         last_name='Demo',
         admin=True,
-        phone='5105115123',
+        phone=5105115123,
         company_id=1
         )
     demo2 = User(
@@ -18,7 +18,7 @@ def seed_users():
         password='password',
         first_name='Mr',
         last_name='Demo2',
-        phone='5105115124',
+        phone=5105115124,
         company_id=1
         )
 
