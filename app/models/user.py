@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(255),nullable=False)
     last_name = db.Column(db.String(255),nullable=False)
     admin = db.Column(db.Boolean,nullable=False, default=False)
-    phone = db.Column(db.Integer,nullable=False)
+    phone = db.Column(db.String,nullable=False)
     company_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('companies.id')),nullable=False)
 
     company = db.relationship("Company", back_populates='users')

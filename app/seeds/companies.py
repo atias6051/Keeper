@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 def seed_companies():
     demo = Company(
         name="The Testing Company",
-        phone=8881541544,
+        phone='8881541544',
         address="123 Testing Ave",
         city="Fairport",
         state="NY",

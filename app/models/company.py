@@ -11,7 +11,7 @@ class Company(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), nullable=False)
-    phone = db.Column(db.Integer, nullable=False)
+    phone = db.Column(db.String(15), nullable=False)
     address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(), nullable=False)

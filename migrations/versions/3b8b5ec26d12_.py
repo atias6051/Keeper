@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 994eafd70f07
+Revision ID: 3b8b5ec26d12
 Revises:
-Create Date: 2023-03-22 17:26:24.023349
+Create Date: 2023-03-22 18:08:29.571143
 
 """
 import os
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '994eafd70f07'
+revision = '3b8b5ec26d12'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,7 +24,7 @@ def upgrade():
     op.create_table('companies',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('phone', sa.Integer(), nullable=False),
+    sa.Column('phone', sa.String(length=15), nullable=False),
     sa.Column('address', sa.String(length=255), nullable=False),
     sa.Column('city', sa.String(length=255), nullable=False),
     sa.Column('state', sa.String(), nullable=False),
@@ -34,22 +34,6 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE companies SET SCHEMA {SCHEMA};")
-
-    op.create_table('users',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('first_name', sa.String(length=255), nullable=False),
-    sa.Column('last_name', sa.String(length=255), nullable=False),
-    sa.Column('admin', sa.Boolean(), nullable=False),
-    sa.Column('phone', sa.Integer(), nullable=False),
-    sa.Column('company_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email')
-    )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
     op.create_table('customers',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -93,6 +77,21 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE user_invites SET SCHEMA {SCHEMA};")
 
+    op.create_table('users',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('first_name', sa.String(length=255), nullable=False),
+    sa.Column('last_name', sa.String(length=255), nullable=False),
+    sa.Column('admin', sa.Boolean(), nullable=False),
+    sa.Column('phone', sa.String(), nullable=False),
+    sa.Column('company_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
     op.create_table('estimates',
     sa.Column('id', sa.Integer(), nullable=False),
