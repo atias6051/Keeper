@@ -33,49 +33,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
-    op.create_table('customers',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('company_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=False),
-    sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('phone', sa.String(length=10), nullable=False),
-    sa.Column('address', sa.String(), nullable=False),
-    sa.Column('city', sa.String(), nullable=False),
-    sa.Column('state', sa.String(), nullable=False),
-    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
-    op.create_table('services',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('company_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=255), nullable=False),
-    sa.Column('description', sa.Text(), nullable=False),
-    sa.Column('price', sa.Float(), nullable=False),
-    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
-    op.create_table('user_invites',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('hashed_key', sa.String(length=255), nullable=False),
-    sa.Column('company_id', sa.Integer(), nullable=False),
-    sa.Column('first_name', sa.String(length=255), nullable=False),
-    sa.Column('last_name', sa.String(length=255), nullable=False),
-    sa.Column('active', sa.Boolean(), nullable=False),
-    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email')
-    )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE companies SET SCHEMA {SCHEMA};")
 
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -93,6 +51,49 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
+    op.create_table('customers',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('company_id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(), nullable=False),
+    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('phone', sa.String(length=10), nullable=False),
+    sa.Column('address', sa.String(), nullable=False),
+    sa.Column('city', sa.String(), nullable=False),
+    sa.Column('state', sa.String(), nullable=False),
+    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE customers SET SCHEMA {SCHEMA};")
+
+    op.create_table('services',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('company_id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=255), nullable=False),
+    sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('price', sa.Float(), nullable=False),
+    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE services SET SCHEMA {SCHEMA};")
+
+    op.create_table('user_invites',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('hashed_key', sa.String(length=255), nullable=False),
+    sa.Column('company_id', sa.Integer(), nullable=False),
+    sa.Column('first_name', sa.String(length=255), nullable=False),
+    sa.Column('last_name', sa.String(length=255), nullable=False),
+    sa.Column('active', sa.Boolean(), nullable=False),
+    sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE user_invites SET SCHEMA {SCHEMA};")
+
+
     op.create_table('estimates',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
@@ -108,7 +109,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE estimates SET SCHEMA {SCHEMA};")
 
     # ### end Alembic commands ###
 
