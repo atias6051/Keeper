@@ -1,20 +1,19 @@
 """empty message
 
-Revision ID: 2ae3ce5eb755
+Revision ID: 994eafd70f07
 Revises:
-Create Date: 2023-03-20 19:11:27.266316
+Create Date: 2023-03-22 17:26:24.023349
 
 """
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
-
 from alembic import op
 import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2ae3ce5eb755'
+revision = '994eafd70f07'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,14 +25,13 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('phone', sa.Integer(), nullable=False),
-    sa.Column('address', sa.String(), nullable=False),
-    sa.Column('city', sa.String(), nullable=False),
+    sa.Column('address', sa.String(length=255), nullable=False),
+    sa.Column('city', sa.String(length=255), nullable=False),
     sa.Column('state', sa.String(), nullable=False),
     sa.Column('logo_url', sa.String(), nullable=True),
     sa.Column('terms_conditions', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
@@ -42,14 +40,13 @@ def upgrade():
     sa.Column('company_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('phone', sa.Integer(), nullable=False),
+    sa.Column('phone', sa.String(length=10), nullable=False),
     sa.Column('address', sa.String(), nullable=False),
     sa.Column('city', sa.String(), nullable=False),
     sa.Column('state', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
@@ -62,7 +59,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['company_id'], ['companies.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
@@ -78,7 +74,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
@@ -95,7 +90,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
@@ -113,7 +107,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
