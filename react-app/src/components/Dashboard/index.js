@@ -9,8 +9,6 @@ export default function Dashboard(){
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch()
 
-    // const dispatcher = async()
-
     useEffect(()=>{
         if(user === null){
             return history.push("/")
