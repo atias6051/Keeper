@@ -1,0 +1,17 @@
+.customer-display{
+    height: 80vh;
+    margin: 20px;
+    padding: 10px 15px;
+    background-color: white;
+    box-shadow: 2px 2px 12px -2px var(--drak);
+    /* overflow-y: scroll; */
+}
+
+.input-field{
+    border: none;
+    font-weight: bold;
+}
+.input-field:active{
+    border: none;
+
+}

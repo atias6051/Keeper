@@ -1,1 +1,102 @@
-/* TODO Add site wide styles */
+*,*:before,*:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    overflow: hidden;
+}
+
+:root {
+    --drak: #2c3333;
+    --semi-drak: #2e4f4f;
+    --light: #0e8388;
+    --lightest: #cbe4de;
+    --gray:  rgb(232, 232, 232);
+}
+
+.flex-row{
+    display: flex;
+    align-items: center;
+}
+.bold-t{
+    font-weight:600;
+}
+.marg15-l{
+    margin-left: 15px;
+}
+.space-b{
+    justify-content: space-between;
+}
+#main-page{
+    display: flex;
+}
+.sidebar1{
+    background-color: var(--semi-drak);
+    width: 100vw;
+    height: 100vh;
+}
+.no-dec{
+    text-decoration: none;
+    color: var(--drak);
+}
+
+.create-button{
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    background-color: #2e4f4f;
+    color: white;
+    transition: all 0.2s ease-in;
+}
+.create-button *{
+    margin: 0 5px;
+}
+.create-button:hover{
+    cursor: pointer;
+    background-color: var(--lightest);
+    color: #2e4f4f;
+
+}
+
+.search-bar{
+    border-radius: 8px;
+    padding: 5px 15px;
+    height: 100%;
+    margin: 0;
+}
+.search-container{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-nav-button{
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--lightest);
+    font-weight: 300;
+    background-color: var(--drak);
+    color: var(--lightest);
+    transition: all 0.2s ease-in;
+}
+.login-nav-button:hover{
+    cursor: pointer;
+    background-color: var(--lightest);
+    border: 2px solid var(--drak);
+    color: var(--drak);
+    border: 2px solid white;
+}
+
+.hov:hover{
+    cursor: pointer;
+}
+
+.back-button{
+    color: var(--drak);
+    font-size: 2rem;
+}
