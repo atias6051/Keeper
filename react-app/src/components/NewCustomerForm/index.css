@@ -1,0 +1,24 @@
+.customer-form{
+    height: 70vh;
+    margin: 20px;
+    padding: 10px 15px;
+    background-color: white;
+    box-shadow: 2px 2px 12px -2px var(--drak);
+    /* overflow-y: scroll; */
+}
+
+.customer-form span{
+    color: red;
+    font-size: 1rem;
+}
+
+
+#customer-info{
+    display: flex;
+    flex-direction: column;
+}
+#customer-info label{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
