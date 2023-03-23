@@ -36,5 +36,5 @@ class UserInvite(db.Model):
             'companyId': self.company_id,
             'firstName': self.first_name,
             'lastName': self.last_name,
-            'active': self.active,
+            'active': self.active
         }

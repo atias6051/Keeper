@@ -10,18 +10,23 @@
 
 #signup-cards-container{
     display: flex;
-    /* gap: 5px; */
 }
 
 .sing-log-card{
     /* background-color: rgb(255, 255, 255); */
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
     background: linear-gradient(to bottom, #ffffff, #f7efef91);
     border-radius: 13px;
-    margin: 15px;
+    margin: 5px;
     width: 20vw;
-    height: 20vh;
+    height: 60vh;
     border: 1px solid var(--drak);
+    font-weight: bold;
 }
 
 .base-2{
@@ -29,5 +34,28 @@
     flex-grow: 1;
 }
 .base-1{
-    flex-basis: 2;
+    flex-basis: 1;
+    font-size: 1.3rem;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-container *{
+    width: 100%;
+}
+.form-container input{
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--drak);
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+.form-container input:focus{
+    background-color: var(--lightest);
 }

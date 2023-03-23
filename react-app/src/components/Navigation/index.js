@@ -9,6 +9,7 @@ import { logout } from '../../store/session';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const company = useSelector(state=>state.company.company)
 	const dispatch = useDispatch()
 
 	const handleLogout = (e) => {
@@ -25,7 +26,8 @@ function Navigation({ isLoaded }){
 			  </NavLink>
 			</div>
 			{sessionUser ? (
-			  <div>
+			  <div id="nav-right">
+				{company?(<p className='hov' id="comp-name">{company.name}<i class="fa-sharp fa-solid fa-gear gear-style"></i></p>):""}
 				<button onClick={handleLogout} className='login-nav-button'>Log Out</button>
 			  </div>
 			) : (
@@ -42,24 +44,6 @@ function Navigation({ isLoaded }){
 		  </div>
 		</div>
 	  );
-	// return (
-	// 	<div id="nav-bar">
-	// 		<div className='flex-row space-b'>
-	// 			<div>
-	// 				<NavLink exact to="/"><img id="navbar-logo" src='https://i.imgur.com/ClSNsKh.png'/></NavLink>
-	// 			</div>
-	// 			{isLoaded && (
-	// 				<div>
-	// 					<OpenModalButton
-    //         			  buttonText="Log In"
-    //         			  modalComponent={<LoginFormModal />}
-	// 					  nameClass="login-nav-button"
-    //         			/>
-	// 				</div>
-	// 			)}
-	// 		</div>
-	// 	</div>
-	// );
 }
 
 export default Navigation;

@@ -12,7 +12,9 @@
     background-color: var(--lightest);
     box-shadow: 0 2px 12px -2px var(--drak);
 }
-
+#customers-navbar h3{
+    color: var(--drak);
+}
 .tile-display{
     height: 80vh;
     margin: 20px;

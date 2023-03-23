@@ -13,7 +13,25 @@
   list-style: none;
   border-bottom: 1px solid var(--lightest);
 }
-
+#nav-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#comp-name{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+.gear-style{
+  font-size: 1.5rem;
+  margin: 0 5px;
+  transition: all 0.5s ease-in-out;
+}
+.gear-style:hover{
+  transform: rotate(180deg);
+}
 #navbar-logo{
   height: 60px;
 }
