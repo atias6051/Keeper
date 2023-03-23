@@ -69,6 +69,14 @@ export default function Dashboard(){
             backgroundColor: ["#0e8388"]
         }]
     }
+    const chartData3 = {
+        labels: UserData.map(el=>el.year),
+        datasets: [{
+            label: "Test Data",
+            data: UserData.map(el=>el.userGain*Math.random()),
+            backgroundColor: ["#656ac7"]
+        }]
+    }
 
     if(!user) return null
 
@@ -86,7 +94,7 @@ export default function Dashboard(){
             </div>
             <div className='test-chart'>
                 <p>Test data2</p>
-                <TestComp chartData={chartData2}/>
+                <TestComp chartData={chartData3}/>
             </div>
             <div className='test-chart'>
                 <p>Test data1</p>
@@ -98,10 +106,9 @@ export default function Dashboard(){
             </div>
             <div className='test-chart'>
                 <p>Test data1</p>
-                <TestComp chartData={chartData}/>
+                <TestComp chartData={chartData3}/>
             </div>
             </div>
-            <h1>hihihi</h1>
         </section>
     )
 }
