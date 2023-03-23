@@ -1,4 +1,23 @@
 #dashboard-section{
     background-color: var(--gray);
     width: 82%;
+    overflow-y: scroll;
+}
+
+.test-chart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 20px;
+    /* border: 1px solid var(--drak); */
+    border-radius: 15px;
+    box-shadow: 4px 4px 15px 0px #2c3333;
+    padding: 5px;
+    /* height: 400px; */
+}
+
+#stats-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
