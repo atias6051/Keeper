@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import {Bar} from "react-chartjs-2";
+import {Chart as ChartJs} from 'chart.js/auto'
 
 
-export default function TestComp(){
-    return(
-        <div>
-            <h1>Test Comp</h1>
-            <h4>Testing comps!</h4>
-        </div>
-    )
+export default function TestComp({chartData}){
+
+    return <Bar data={chartData}/>
 }
