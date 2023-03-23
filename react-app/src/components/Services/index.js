@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-// import CustomerTile from './CustomerTile';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, Switch, Route, useHistory, useLocation } from 'react-router-dom';
+import { getServices } from '../../store/service';
+import NewServiceForm from '../NewServiceForm';
 import './index.css'
 
 export default function Services(){
-    // const services = useSelector(state=>state.company.company.services)
+    const services = useSelector(state=>state.service.services)
+    const dispatch = useDispatch()
+    const location = useLocation()
+    const history = useHistory()
 
+    useEffect(()=>{
+      dispatch(getServices())
+    },[dispatch])
+    if(!services) return null
     return (
         <section id="all-services">
             <div id="services-navbar">
@@ -13,21 +22,21 @@ export default function Services(){
                     <input className="search-bar" type="text"></input>
                     <i class="fa-solid fa-magnifying-glass marg15-l"></i>
                 </div>
-                <button className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Service</button>
+                <h3>SERVICES</h3>
+                <button onClick={()=>history.push('/dashboard/services/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Service</button>
             </div>
-
-            {/* <div className='tile-display'>
-                {Object.keys(groupedCustomers).map((letter) => (
-                <div key={letter}>
-                  <h4 className='pad-in'>{letter}</h4>
-                  {groupedCustomers[letter].map((customer) => (
-                    <div key={customer.id}>
-                      <CustomerTile customer={customer} />
-                    </div>
-                  ))}
+            <Switch>
+              <Route exact path="/dashboard/services">
+                <div className='tile-display'>
+                  {services && services.map(el=>(
+                    <h2>{el.name}</h2>
+                    ))}
                 </div>
-              ))}
-            </div> */}
+              </Route>
+              <Route path='/dashboard/services/new'>
+                <NewServiceForm/>
+              </Route>
+            </Switch>
         </section>
     )
 }

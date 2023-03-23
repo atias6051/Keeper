@@ -6,6 +6,17 @@ from ..forms.user_invite_form import UserInviteForm
 
 invite_routes = Blueprint('invites',__name__)
 
+
+@invite_routes.route('/check',methods=['POST'])
+def tester_route():
+    invite_data = request.get_json()
+    invite = UserInvite.query.filter(UserInvite.email == invite_data.get('email')).first()
+    if not invite:
+        return jsonify({"message":"error no invite to this email"}),404
+    if invite.check_key(invite_data.get('key')):
+        return jsonify(invite.to_dict())
+    return jsonify("invalid"),404
+
 @invite_routes.route('')
 @login_required
 def get_invites():

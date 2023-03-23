@@ -53,6 +53,7 @@ export default function Customers(){
                     <input className="search-bar" type="text"></input>
                     <i class="fa-solid fa-magnifying-glass marg15-l"></i>
                 </div>
+                <h3>CUSTOMERS</h3>
                 <button onClick={()=>history.push('/dashboard/customers/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Customer</button>
             </div>
             <Switch>
