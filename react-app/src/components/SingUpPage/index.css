@@ -28,6 +28,9 @@
     border: 1px solid var(--drak);
     font-weight: bold;
 }
+.sing-log-card ul{
+    font-size: 1rem;
+}
 
 .base-2{
     flex-basis: 2;
@@ -58,4 +61,17 @@
 }
 .form-container input:focus{
     background-color: var(--lightest);
+}
+
+.status-placeholder{
+    /* border: 1px solid red; */
+    height: 30px;
+    width: 100%;;
+}
+.test1{
+    background-color: red;
+}
+
+.test2{
+    background-color: green;
 }

@@ -21,8 +21,14 @@
 #comp-name{
   display: flex;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 20px;
   font-size: 1.2rem;
+  filter: saturate(0%);
+  transition: all 0.3s ease-in-out;
+}
+#comp-name:hover{
+  filter: saturate(100%);
+  color: var(--lightest);
 }
 .gear-style{
   font-size: 1.5rem;
@@ -38,4 +44,10 @@
 
 #navbar-login{
   padding: 5px 10px;
+}
+#nav-bar-comp-logo{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
 }

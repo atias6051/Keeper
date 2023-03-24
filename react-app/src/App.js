@@ -10,6 +10,7 @@ import SignUpPage from "./components/SingUpPage";
 import Customers from "./components/Customers";
 import Dashboard from "./components/Dashboard";
 import Services from "./components/Services";
+import ComapnyPage from "./components/CompanyPage";
 
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
               </Route>
               <Route path="/signup">
                 <SignupFormPage />
+              </Route>
+              <Route path="/dashboard/company" >
+                <ComapnyPage />
               </Route>
               <Route path="/dashboard/customers">
                 <Customers />

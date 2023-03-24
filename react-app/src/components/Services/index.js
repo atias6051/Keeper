@@ -29,7 +29,7 @@ export default function Services(){
               <Route exact path="/dashboard/services">
                 <div className='tile-display'>
                   {services && services.map(el=>(
-                    <h2>{el.name}</h2>
+                    <h2 key={el.id}>{el.name}</h2>
                     ))}
                 </div>
               </Route>

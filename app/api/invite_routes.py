@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, session, request
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, login_user
 from sqlalchemy import desc
 from app.models import User, Company, Service, UserInvite, db
+
 from ..forms.user_invite_form import UserInviteForm
+from ..forms.singup_invite_form import SignUpInviteForm
 
 invite_routes = Blueprint('invites',__name__)
 
@@ -13,6 +15,8 @@ def tester_route():
     invite = UserInvite.query.filter(UserInvite.email == invite_data.get('email')).first()
     if not invite:
         return jsonify({"message":"error no invite to this email"}),404
+    if not invite.active:
+        return jsonify({"message":"Invite is inactive"}),404
     if invite.check_key(invite_data.get('key')):
         return jsonify(invite.to_dict())
     return jsonify("invalid"),404
@@ -72,3 +76,31 @@ def update_invite(id):
     invite.last_name = invite_data.get('last_name', invite.last_name)
     db.session.commit()
     return jsonify(invite.to_dict())
+
+@invite_routes.route('/signup',methods=['POST'])
+def invite_signup():
+    form = SignUpInviteForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        user = User(
+            first_name = form.first_name.data,
+            last_name = form.last_name.data,
+            email = form.email.data,
+            password = form.password.data,
+            phone = form.phone.data,
+            admin = False,
+            company_id = form.company_id.data
+        )
+
+        db.session.add(user)
+
+        invite = UserInvite.query.get(int(form.invite_id.data))
+        invite.active = False
+
+        db.session.add(invite)
+        db.session.commit()
+
+        user_login = User.query.filter(User.email == form.data['email']).first()
+        login_user(user_login)
+        return jsonify(user_login.to_dict())
+    return jsonify({'errors': form.errors})

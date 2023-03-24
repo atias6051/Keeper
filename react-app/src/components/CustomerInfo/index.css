@@ -92,6 +92,19 @@
     color: var(--lightest);
     border-color: red;
 }
+.keep-customer{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: var(--semi-drak);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.keep-customer:hover{
+    cursor: pointer;
+    background-color: var(--lightest);
+    color: var(--drak);
+    /* border-color: red; */
+}
 
 .error-span{
     color: red;
