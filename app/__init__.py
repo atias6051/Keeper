@@ -13,6 +13,7 @@ from .api.company_routes import company_routes
 from .api.customer_routes import customer_routes
 from .api.service_routes import service_routes
 from .api.invite_routes import invite_routes
+from .api.documents_routes import documents_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -36,6 +37,7 @@ app.register_blueprint(company_routes, url_prefix='/api/company')
 app.register_blueprint(customer_routes, url_prefix='/api/customers')
 app.register_blueprint(service_routes, url_prefix='/api/services')
 app.register_blueprint(invite_routes, url_prefix='/api/invites')
+app.register_blueprint(documents_routes, url_prefix='/api/documents')
 db.init_app(app)
 Migrate(app, db)
 

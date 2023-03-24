@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './index.css'
 import { getCompany } from '../../store/company';
 import TestComp from '../TestComp';
+import { getEstimates } from '../../store/documents';
 
 export default function Dashboard(){
     const history = useHistory()
@@ -16,6 +17,7 @@ export default function Dashboard(){
         }
         if(user){
             dispatch(getCompany())
+            dispatch(getEstimates())
         }
     },[user])
 

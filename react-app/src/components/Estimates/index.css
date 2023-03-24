@@ -1,0 +1,133 @@
+:root {
+    --drak: #2c3333;
+    --semi-drak: #2e4f4f;
+    --light: #0e8388;
+    --lightest: #cbe4de;
+    --gray:  rgb(232, 232, 232);
+}
+
+.center{
+    align-items: center;
+}
+.single-service-container{
+    display: flex;
+    align-items: center;
+}
+.remove-service-button{
+    margin-left: 10px;
+    height: 4vh;
+    width: 4vh;
+    padding: 2px;
+    background-color: #2c3333;
+    border: 1px solid var(--drak);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+.remove-service-button:hover{
+    cursor: pointer;
+    background-color: white;
+    color:#2c3333;
+}
+#document-logo{
+    width: 50px;
+    height: 50px;
+}
+.eastimate-top-info{
+    display: flex;
+    justify-content: space-between;
+}
+#estimate-company-info{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+}
+
+.estimate-services{
+    margin-top: 20px;
+    /* border: 1px solid var(--gray); */
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.single-service{
+    margin: 5px 0;
+    border: 1px solid gray;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(4, auto);
+    width: 100%;
+}
+.spot-a {
+  grid-column: 1 / 5;
+}
+.spot-b {
+  grid-column: 5 / 7;
+  grid-row: 1 / 2;
+}
+.spot-c {
+  grid-column: 7 / 9;
+  grid-row: 1 / 2;
+}
+.spot-d {
+  grid-column: 9 / 11;
+  grid-row: 1 / 2;
+}
+.spot-e {
+  grid-column: 1 / 11;
+  grid-row: 2 / 5;
+}
+.single-service input,
+.single-service textarea{
+    font-size: 1rem;
+    padding: 5px;
+    /* background-color: red; */
+    border: 1px solid var(--gray);
+}
+.single-service input:focus,
+.single-service textarea:focus{
+    /* border: none; */
+    /* border-bottom: 1px solid var(--drak);
+    border-top: 1px solid var(--drak); */
+    /* border-bottom: 1px solid var(--drak); */
+    background-color: var(--gray);
+    outline: none;
+}
+#name-input{
+
+}
+#price-input{
+
+}
+#quantity-input{
+
+}
+#service-total{
+    display: flex;
+    justify-content: flex-end;
+    padding: 2px 10px;
+}
+#description-input{
+    /* height: 10vh; */
+    /* padding-left: 5px; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 30px;
+}
+.service-list-link{
+    position: absolute;
+    border: none;
+    background: none;
+    color: #0e8388;
+    left: 0px;
+}
+.container-test{
+    position: relative;
+}
