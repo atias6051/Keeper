@@ -11,6 +11,7 @@ import Customers from "./components/Customers";
 import Dashboard from "./components/Dashboard";
 import Services from "./components/Services";
 import ComapnyPage from "./components/CompanyPage";
+import Estimates from "./components/Estimates";
 
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
               </Route>
               <Route path="/dashboard/services">
                 <Services />
+              </Route>
+              <Route path="/dashboard/estimates">
+                <Estimates />
               </Route>
             </Switch>
           </div>

@@ -29,4 +29,5 @@ class Estimate(db.Model):
             'discount': self.discount,
             'date': self.date,
             'isInvoice': self.is_invoice,
+            'customerName': self.customer.name
         }

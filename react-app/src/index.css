@@ -25,7 +25,7 @@ body {
 
 
 :root {
-    --drak: #2c3333;
+    --drak: #2e2c33;
     --semi-drak: #2e4f4f;
     --light: #0e8388;
     --lightest: #cbe4de;
@@ -127,4 +127,9 @@ body {
 }
 .width-filler{
     width: 50px;
+}
+#service-input-container{
+    display: flex;
+    flex-grow: 1;
+    position: relative;
 }

@@ -5,6 +5,7 @@ import company from './company'
 import customer from './customer'
 import service from './service'
 import invites from './invites'
+import documents from './documents'
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   customer,
   service,
   invites,
+  documents,
 });
 
 
