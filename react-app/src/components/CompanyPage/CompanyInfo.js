@@ -16,6 +16,10 @@ export default function CompanyInfo(){
             <div>
                 <img src={company.logoUrl} />
                 <h3>{company.name}</h3>
+                <h3>{company.phone}</h3>
+                <h3>{company.address}</h3>
+                <h3>{company.city}</h3>
+                <h3>{company.state}</h3>
             </div>
         </div>
     )

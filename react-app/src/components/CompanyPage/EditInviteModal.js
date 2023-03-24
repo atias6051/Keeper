@@ -33,7 +33,7 @@ export default function EditInviteModal({invite}) {
         if(validationsObj.errors) return
         const updatedObj = {
             first_name: inviteObj.firstName,
-            last_name: inviteObj.lasttName,
+            last_name: inviteObj.lastName,
             email: inviteObj.email,
             id: invite.id
         }

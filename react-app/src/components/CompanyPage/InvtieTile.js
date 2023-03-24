@@ -5,7 +5,7 @@ import EditInviteModal from './EditInviteModal';
 export default function InviteTile({invite}){
 
     return(
-        <div className="invite-tile-container">
+        <div className={invite.active?"invite-tile-container":"join-invite-tile"}>
                 <div className="invite-tile">
                 <div className='tile-single-div'>
                 <span>First Name: </span>
@@ -16,7 +16,7 @@ export default function InviteTile({invite}){
                 <p>{invite.lastName}</p>
                 </div>
                 <div className='tile-single-div'>
-                <span>Email: </span>
+                <span className='email-span'>Email: </span>
                 <p>{invite.email}</p>
                 </div>
                 <div className='tile-single-div'>
@@ -25,16 +25,20 @@ export default function InviteTile({invite}){
                 </div>
                 </div>
                 <div className="tile-buttons">
-                <OpenModalButton
-                modalComponent={<EditInviteModal invite={invite}/>}
-                buttonText="Edit"
-                nameClass="keep-customer"
-                />
-                <OpenModalButton
-                modalComponent={<DeleteInviteModal invite={invite}/>}
-                buttonText="Remove"
-                nameClass="delete-customer"
-                />
+                    {invite.active?(
+                        <OpenModalButton
+                        modalComponent={<EditInviteModal invite={invite}/>}
+                        buttonText="Edit"
+                        nameClass="keep-customer"
+                        />
+                    ):""}
+                        <OpenModalButton
+                        modalComponent={<DeleteInviteModal invite={invite}/>}
+                        buttonText="Remove"
+                        nameClass="delete-customer"
+                        />
+
+
                 </div>
         </div>
     )

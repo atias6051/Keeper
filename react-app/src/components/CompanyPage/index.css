@@ -13,15 +13,15 @@
 
 .info-tab{
     position: relative;
-    top: 1px;
+    top: 2px;
     text-decoration: none;
     font-size: 1.5rem;
     padding: 5px 10px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-color:#0e8388;
-    color: #cbe4de;
-    border: 1px solid #2c3333;
+    background-color:#2c3333;
+    color: white;
+    border: 2px solid #2c3333;
 }
 
 .focus{
@@ -34,7 +34,7 @@
     width: 100%;
     height: 85%;
     background-color:#ffffff;
-    border: 1px solid #2c3333;
+    border: 2px solid #2c3333;
     overflow-y: scroll;
     padding: 40px;
     /* border-top-right-radius: 8px; */
@@ -48,13 +48,17 @@
     padding: 5px;
     font-size: 1rem;
     display: flex;
-    /* border: 1px solid #2c3333;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out; */
+    justify-content: space-between;
 }
+
 .invite-tile span{
     font-weight: 600;
+    /* width: 80px; */
     /* color: red; */
+}
+
+.email-span{
+    width: 180px;
 }
 
 .tile-single-div{
@@ -86,6 +90,17 @@
 }
 .invite-tile-container:hover{
     background-color: var(--gray);
+}
+.join-invite-tile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #2c3333;
+    border-radius: 5px;
+    /* transition: all 0.3s ease-in-out; */
+    background-color: var(--gray);
+    margin: 3px 0;
+    padding: 5px;
 }
 
 .invites-title-container{
@@ -120,6 +135,7 @@
     border-radius: 5px;
     background-color: var(--gray);
 }
+
 
 .top-bar{
     display: flex;
