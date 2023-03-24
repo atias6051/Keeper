@@ -1,11 +1,14 @@
 #side-bar{
     position: sticky;
+
+    /* display: flex; */
     /* position: absolute; */
     background-color: var(--drak);
     height: 100vh;
     width: 18vw;
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
 
 }
@@ -13,17 +16,39 @@
 .sidebar-button.active{
     /* color: var(--semi-drak); */
     background-color: #434a4a;
-    border-radius: 10px;
+    box-shadow: inset 0px 0px 10px #5d6363;
+    /* border-radius: 10px; */
     /* font-weight: 700; */
 }
+
+.sidebar-button.active::before{
+    /* color: var(--semi-drak); */
+    background-color: #4dff00;
+    /* border-radius: 10px; */
+    /* font-weight: 700; */
+    content: '';
+    position: absolute;
+    border-radius: 5px;
+    bottom: 0px;
+    /* bottom: -5px; */
+    left: 0px;
+    width: 100%;
+    background-color: var(--lightest);
+    height: 2px;
+}
+
 .sidebar-button{
     position: relative;
     color: white;
     text-decoration: none;
-    margin: 10px;
-    padding: 10px 45px;
+    margin: 0;
+    /* text-align: center; */
+    /* display: flex; */
+    /* flex-grow: 1; */
+    padding: 20px 45px;
     font-weight:400;
-    transition: width 0.5s ease-in-out;
+    width: 100%;
+    /* transition: width 0.5s ease-in-out; */
 }
 .sidebar-button:hover{
     color: var(--lightest);
@@ -32,7 +57,8 @@
     content: '';
     position: absolute;
     border-radius: 5px;
-    bottom: -5px;
+    bottom: 0px;
+    /* bottom: -5px; */
     left: 0px;
     width: 0;
     background-color: var(--lightest);
