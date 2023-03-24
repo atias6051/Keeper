@@ -58,3 +58,58 @@ export const customerValidation = (customer,errorsTemp) => {
 
     return errorsObj
 }
+
+export const inviteValidation  = invite => {
+    let errorsObj = {
+        errors: false
+    }
+    if(invite.email.length === 0){
+        errorsObj.email = "Email required"
+        errorsObj.errors = true
+    }
+    if(invite.email.length && !isValidEmail(invite.email)){
+        errorsObj.email = "Email address is invalid"
+        errorsObj.errors = true
+    }
+    if(invite.firstName.length === 0){
+        errorsObj.firstName = "First name required"
+        errorsObj.errors = true
+    }
+    if(invite.firstName.length > 100){
+        errorsObj.firstName = "First name must be under 100 characters"
+        errorsObj.errors = true
+    }
+    if(invite.lastName.length === 0){
+        errorsObj.lastName = "Last name required"
+        errorsObj.errors = true
+    }
+    if(invite.lastName.length > 100){
+        errorsObj.lastName = "Last name must be under 100 characters"
+        errorsObj.errors = true
+    }
+
+    return errorsObj
+}
+
+export const inviteSignupValidation = invite => {
+    let errorsObj = {
+        errors: false
+    }
+    if(!invite.phone.length){
+        errorsObj.phone = "Phone number is required"
+        errorsObj.errors = true
+    }
+    if(invite.phone.length < 6 || invite.phone.length > 12 ){
+        errorsObj.phone = "Phone number must be between 6-12 digits"
+        errorsObj.errors = true
+    }
+    if(!validPhone(invite.phone)){
+        errorsObj.phone = "Invalid phone number - please enter digits only"
+        errorsObj.errors = true
+    }
+    if(invite.password !== invite.passwordConfirm){
+        errorsObj.password = "Passwords dont match"
+        errorsObj.errors = true
+    }
+    return errorsObj
+}

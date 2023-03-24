@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import OpenModalButton from '../OpenModalButton';
@@ -10,6 +10,7 @@ import { logout } from '../../store/session';
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	const company = useSelector(state=>state.company.company)
+	const history = useHistory()
 	const dispatch = useDispatch()
 
 	const handleLogout = (e) => {
@@ -27,7 +28,7 @@ function Navigation({ isLoaded }){
 			</div>
 			{sessionUser ? (
 			  <div id="nav-right">
-				{company?(<p className='hov' id="comp-name">{company.name}<i class="fa-sharp fa-solid fa-gear gear-style"></i></p>):""}
+				{company?(<p onClick={()=>history.push('/dashboard/company')} className='hov' id="comp-name">{company.name}<img id="nav-bar-comp-logo"src={company.logoUrl}/></p>):""}
 				<button onClick={handleLogout} className='login-nav-button'>Log Out</button>
 			  </div>
 			) : (

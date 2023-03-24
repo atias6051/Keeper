@@ -63,12 +63,12 @@ export default function Customers(){
                         <div key={letter}>
                       <h4 className='pad-in no-dec'>{letter}</h4>
                       {sortedCustomers[letter].map((customer) => (
-                          <NavLink className='no-dec' to={`/dashboard/customers/${customer.id}`}>
-                          <CustomerTile customer={customer} />
+                        <NavLink key={customer.id} className='no-dec' to={`/dashboard/customers/${customer.id}`}>
+                          <CustomerTile key={customer.id} customer={customer} />
                         </NavLink>
-                      ))}
-                    </div>
-                  ))}
+                        ))}
+                        </div>
+                    ))}
                 </div>
                 </Route>
                 <Route path="/dashboard/customers/new">

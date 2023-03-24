@@ -34,6 +34,7 @@ class UserInvite(db.Model):
             'id': self.id,
             'email': self.email,
             'companyId': self.company_id,
+            'companyName': self.company.name,
             'firstName': self.first_name,
             'lastName': self.last_name,
             'active': self.active

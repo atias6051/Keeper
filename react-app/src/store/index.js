@@ -4,12 +4,14 @@ import session from './session'
 import company from './company'
 import customer from './customer'
 import service from './service'
+import invites from './invites'
 
 const rootReducer = combineReducers({
   session,
   company,
   customer,
   service,
+  invites,
 });
 
 
