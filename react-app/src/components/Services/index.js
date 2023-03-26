@@ -4,6 +4,7 @@ import { NavLink, Switch, Route, useHistory, useLocation } from 'react-router-do
 import { getServices } from '../../store/service';
 import NewServiceForm from '../NewServiceForm';
 import './index.css'
+import ServiceTile from './ServiceTile';
 
 export default function Services(){
     const services = useSelector(state=>state.service.services)
@@ -28,8 +29,8 @@ export default function Services(){
             <Switch>
               <Route exact path="/dashboard/services">
                 <div className='tile-display'>
-                  {services && services.map(el=>(
-                    <h2 key={el.id}>{el.name}</h2>
+                  {services && services.sort((a, b) => a.name.localeCompare(b.name)).map(el=>(
+                    <ServiceTile service={el} />
                     ))}
                 </div>
               </Route>

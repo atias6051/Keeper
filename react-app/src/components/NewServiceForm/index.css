@@ -1,0 +1,17 @@
+.service-inputs-container label{
+    display: flex;
+    flex-direction: column;
+    /* font-size: 1rem; */
+}
+.service-inputs-container textarea{
+    height: 35vh;
+    font-size: 1.5rem;
+    padding: 3px 15px;
+}
+.service-inputs-container input{
+    font-size: 1.5rem;
+    padding: 3px 5px;
+}
+.service-inputs-container button{
+    margin-top: 10px;
+}

@@ -14,7 +14,6 @@ export const removeDocService = (serviceList,numServices,removeIndex) =>{
     }
 }
 
-
 export const removeKey = (obj, removeKey) => {
     let newObj = {}
     let len = Object.keys(obj).length
@@ -28,3 +27,35 @@ export const removeKey = (obj, removeKey) => {
     }
     return newObj
 };
+
+export const sortObjectsByName = arr => {
+    return arr.sort((a, b) => {
+      const nameA = a.name.toUpperCase()
+      const nameB = b.name.toUpperCase()
+      if (nameA < nameB) {
+        return -1
+      }
+      if (nameA > nameB) {
+        return 1
+      }
+      return 0
+    })
+}
+
+export const formatDate = date => {
+    let newDate = date.split('-')
+    const formattedDate = `${newDate[1]}/${newDate[2]}/${newDate[0]}`;
+
+    return formattedDate
+}
+
+export const dateForInput = date => {
+    let dateParts = date.split("/");
+    let dateObject = new Date(dateParts[2], dateParts[0]-1, dateParts[1]);
+    return dateObject.toISOString().slice(0,10)
+}
+
+export const clearEmptyServices = (services,empyService) =>{
+    return services
+    //need work
+}
