@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Switch, Route, useHistory, useLocation } from 'react-router-dom';
 import { getServices } from '../../store/service';
 import { getEstimates } from '../../store/documents';
+import { getCustomers } from '../../store/customer';
 import NewServiceForm from '../NewServiceForm';
 import './index.css'
 import EstimateTile from './EstimateTile';
 import NewEstimateForm from './NewEstimateForm';
+import SingleEstimate from './SingleEstimate';
 
 export default function Estimates(){
     const estimates = useSelector(state=>state.documents.estimates)
@@ -16,7 +18,9 @@ export default function Estimates(){
 
     useEffect(()=>{
         dispatch(getEstimates())
-    },[dispatch])
+        dispatch(getServices())
+        dispatch(getCustomers())
+    },[dispatch,location])
 
     if(!estimates) return null
     return (
@@ -43,7 +47,7 @@ export default function Estimates(){
                 <NewEstimateForm />
               </Route>
               <Route path='/dashboard/estimates/:id'>
-                {/* <NewServiceForm/> */}
+                <NewEstimateForm />
               </Route>
             </Switch>
         </section>

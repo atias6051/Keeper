@@ -15,3 +15,32 @@
 #services-navbar h3{
     color: var(--drak);
 }
+
+.service-tile-inner{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-modal-container{
+    width: 60vw;
+}
+.service-tile-button{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: var(--semi-drak);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    margin-left: 4px;
+}
+.service-tile-button:hover{
+    cursor: pointer;
+}
+.edit-service:hover{
+    background-color:var(--lightest);
+    color: var(--drak);
+}
+.delete-service:hover{
+    background-color: red;
+}
