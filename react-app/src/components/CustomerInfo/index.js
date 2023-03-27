@@ -61,12 +61,10 @@ export default function CustomerInfo(){
     const saveChanges = async() => {
         setSubmitted(()=> true)
         if(validationErrors.errors) return
-        console.log('connected')
         const updatedCustomer = await dispatch(updateCustomerIfo(infoObj,id))
         await dispatch(getCustomers())
         await dispatch(getSingleCustomer(id))
         setOgState(()=>updatedCustomer)
-        console.log('connected2')
     }
 
     if(!customer) return null

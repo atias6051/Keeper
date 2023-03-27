@@ -22,3 +22,8 @@
     flex-direction: column;
     margin: 5px 0;
 }
+
+#customer-info input{
+    font-size: 1.5rem;
+    padding: 3px 5px;
+}

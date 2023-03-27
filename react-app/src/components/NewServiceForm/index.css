@@ -15,3 +15,7 @@
 .service-inputs-container button{
     margin-top: 10px;
 }
+.service-inputs-container span{
+    color: red;
+    font-size: 1rem;
+}

@@ -113,3 +113,27 @@ export const inviteSignupValidation = invite => {
     }
     return errorsObj
 }
+
+export const serviceValidation = service => {
+    let errorsObj = {
+        errors: false
+    }
+    if(!service.name.length){
+        errorsObj.name = "Service must have a name"
+        errorsObj.errors = true
+    }
+    if(service.name.length > 255){
+        errorsObj.name = "Service name must be under 255 characters"
+        errorsObj.errors = true
+    }
+    if(!service.price){
+        errorsObj.price = "Service must have a price"
+        errorsObj.errors = true
+    }
+    if(!service.description.length){
+        errorsObj.description = "Service must have a description"
+        errorsObj.errors = true
+    }
+
+    return errorsObj
+}

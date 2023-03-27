@@ -52,6 +52,9 @@ function App() {
               <Route path="/dashboard/estimates">
                 <Estimates />
               </Route>
+              <Route path="/dashboard/invoices">
+                <Estimates />
+              </Route>
             </Switch>
           </div>
         )}

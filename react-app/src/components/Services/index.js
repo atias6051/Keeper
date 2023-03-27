@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Switch, Route, useHistory, useLocation } from 'react-router-dom';
-import { getServices } from '../../store/service';
+import { clearSingleService, getServices } from '../../store/service';
 import NewServiceForm from '../NewServiceForm';
 import './index.css'
 import ServiceTile from './ServiceTile';
+import SingleService from './SingleService';
 
 export default function Services(){
     const services = useSelector(state=>state.service.services)
@@ -15,6 +16,14 @@ export default function Services(){
     useEffect(()=>{
       dispatch(getServices())
     },[dispatch])
+
+    useEffect(()=>{
+      if(location.pathname === '/dashboard/services'){
+        dispatch(clearSingleService())
+        dispatch(getServices())
+      }
+    },[location])
+
     if(!services) return null
     return (
         <section id="all-services">
@@ -36,6 +45,9 @@ export default function Services(){
               </Route>
               <Route path='/dashboard/services/new'>
                 <NewServiceForm/>
+              </Route>
+              <Route path='/dashboard/services/:id'>
+                <SingleService />
               </Route>
             </Switch>
         </section>
