@@ -28,11 +28,21 @@ def create_service():
         return jsonify(service.to_dict())
     return jsonify({'errors': form.errors})
 
+@service_routes.route('/<int:id>')
+@login_required
+def get_single_service(id):
+    service = Service.query.get(int(id))
+    if not service:
+        return jsonify({"message":"Service not found","statuscode":404}),404
+    if service.company_id != current_user.company_id:
+        return jsonify({"message":"Service is not in your company records","statuscode":404}),404
+    return jsonify(service.to_dict())
+
 @service_routes.route('/<int:id>',methods=['PUT'])
 @login_required
 def update_service(id):
-    if not current_user.admin:
-        return jsonify({"message":"Only Admin user can edit service records","statuscode":404}),404
+    # if not current_user.admin:
+    #     return jsonify({"message":"Only Admin user can edit service records","statuscode":404}),404
     service = Service.query.get(int(id))
     if not service:
         return jsonify({"message":"Service not found","statuscode":404}),404

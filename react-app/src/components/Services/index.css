@@ -21,6 +21,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
 }
 
 .service-modal-container{
@@ -43,4 +44,35 @@
 }
 .delete-service:hover{
     background-color: red;
+}
+.name-input{
+    /* margin-left: 10px; */
+    font-size: 1.5rem;
+    flex-grow: 1;
+    border: none;
+}
+.price-input{
+    /* margin-left: 10px; */
+    flex-grow: 0;
+    font-size: 1.5rem;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.name-input:active, .price-input:active,
+.name-input:focus, .price-input:focus{
+    border: none;
+    /* background-color: red; */
+}
+.service-textarea{
+    /* flex-grow: 1; */
+    width: 100%;
+    height: 20vh;
+    font-size: 1.5rem;
+    border: none;
+    padding: 5px;
+}
+.service-form-container label{
+    font-weight:600;
+    width: 60vw;
 }
