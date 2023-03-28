@@ -181,3 +181,64 @@
 #update-invite-form h3{
     margin: 5px 0;
 }
+
+.company-page-container{
+    margin-top: 5px;
+    height: 70vh;
+    margin: auto;
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.company-page-container >div{
+    margin: 5px 20px;
+}
+#info-page-logo{
+    height: 150px;
+    width: 150px;
+    /* border-radius: 50%; */
+}
+
+.logo-info-container{
+    display:flex;
+    flex-direction: column;
+    flex-grow: 0;
+    align-items: center;
+    border: 1px solid gray;
+    width: fit-content;
+    padding: 5px 25px;
+    border-radius: 5px;
+}
+
+.logo-info-container *{
+    margin: 5px;
+}
+
+#change-logo-button{
+    width: fit-content;
+    background-color: #2c3333;
+    color: white;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+.input-container input{
+    font-size: 1.5rem;
+    padding: 5px 3px;
+    border: none;
+    background-color: var(--gray);
+}
+.input-container label{
+    margin: 5px 3px;
+}
+.info-form-buttons-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+}

@@ -1,0 +1,80 @@
+.main-signup-page{
+    background-color: rgb(232, 232, 232);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 20px;
+}
+.sign-up-form-container{
+    padding: 15px;
+    background-color: white;
+    border: 1px solid gray;
+    box-shadow: 0px 0px 9px 2px var(--drak);
+    height: 80vh;
+    width: 90vw;
+    border-radius: 8px;
+}
+.sign-up-form{
+    display: flex;
+    gap: 15px;
+}
+.sign-up-form input{
+    font-size: 1.5rem;
+    padding: 3px;
+}
+.sign-up-form input::placeholder{
+    font-size: 1rem;
+}
+.sign-up-form label{
+    margin-top: 15px;
+}
+.personal-info-input-container{
+    display: flex;
+    flex-direction: column;
+}
+.personal-info-input-container span{
+    color: red;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.form-logo-img{
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+.border-div{
+    border: 1px solid gray;
+    padding: 8px;
+    border-radius: 8px;
+}
+.company-info-form{
+    flex-grow: 2;
+    border: 1px solid gray;
+    padding: 8px;
+    border-radius: 8px;
+}
+.personal-info-form{
+    border: 1px solid gray;
+    padding: 8px;
+    border-radius: 8px;
+    width: 30vw;
+}
+.logo-info-form{
+    border: 1px solid gray;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.logo-info-form *{
+    margin: 5px 1px;
+}
+.sign-up-form-container h2{
+    padding: 15px 0;
+}
+.sub-button{
+    margin-top: 10px;
+}

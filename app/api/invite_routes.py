@@ -6,8 +6,18 @@ from app.models import User, Company, Service, UserInvite, db
 from ..forms.user_invite_form import UserInviteForm
 from ..forms.singup_invite_form import SignUpInviteForm
 
+
 invite_routes = Blueprint('invites',__name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
 
 @invite_routes.route('/check',methods=['POST'])
 def tester_route():
@@ -43,7 +53,7 @@ def create_invite():
         db.session.add(new_invite)
         db.session.commit()
         return jsonify(new_invite.to_dict())
-    return jsonify({'errors': form.errors})
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @invite_routes.route('/<int:id>',methods=['DELETE'])
 @login_required

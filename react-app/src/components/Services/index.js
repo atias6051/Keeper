@@ -39,7 +39,7 @@ export default function Services(){
               <Route exact path="/dashboard/services">
                 <div className='tile-display'>
                   {services && services.sort((a, b) => a.name.localeCompare(b.name)).map(el=>(
-                    <ServiceTile service={el} />
+                    <ServiceTile key={el.id} service={el} />
                     ))}
                 </div>
               </Route>

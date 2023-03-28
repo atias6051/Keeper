@@ -20,6 +20,7 @@ export default function SideBar(){
             <NavLink  className="sidebar-button" to="/dashboard/services">Services</NavLink>
             <NavLink  className="sidebar-button" to="/dashboard/estimates">Estimates</NavLink>
             <NavLink  className="sidebar-button" to="/dashboard/invoices">Invoices</NavLink>
+            <div className='my-button'><i class="fa-regular fa-address-card"></i> About Keeper</div>
         </div>
     )
 }
