@@ -12,6 +12,7 @@ import Dashboard from "./components/Dashboard";
 import Services from "./components/Services";
 import ComapnyPage from "./components/CompanyPage";
 import Estimates from "./components/Estimates";
+import NewCompanySignup from "./components/NewCompanySignup";
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
         <Route exact path="/">
           <SignUpPage/>
         </Route>
+        <Route path="/signup">
+          <NewCompanySignup/>
+        </Route>
         <Route path='/dashboard'>
 
         {isLoaded && (
@@ -36,9 +40,6 @@ function App() {
             <Switch>
               <Route exact path="/dashboard" >
                 <Dashboard />
-              </Route>
-              <Route path="/signup">
-                <SignupFormPage />
               </Route>
               <Route path="/dashboard/company" >
                 <ComapnyPage />

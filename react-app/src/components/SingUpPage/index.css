@@ -39,6 +39,12 @@
 .base-1{
     flex-basis: 1;
     font-size: 1.3rem;
+    /* width: fit-content;
+    list-style: none; */
+}
+
+.demo-card{
+    list-style: none;
 }
 
 .form-container{
@@ -74,4 +80,32 @@
 
 .test2{
     background-color: green;
+}
+.sign-up-company-list li{
+    font-size: 1.5rem;
+    list-style: none;
+}
+
+.card-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:2rem;
+    background-color: var(--drak);
+    color: var(--lightest);
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.demo-card-ul{
+    list-style: none;
+}
+
+.title-and-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }

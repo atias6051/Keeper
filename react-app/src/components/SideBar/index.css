@@ -4,7 +4,7 @@
     /* display: flex; */
     /* position: absolute; */
     background-color: var(--drak);
-    height: 100vh;
+    height: 92vh;
     width: 18vw;
     display: flex;
     flex-direction: column;
@@ -89,4 +89,20 @@
     100% {
         width: 0;
     }
+}
+
+
+.my-button{
+    margin-top: auto;
+    background-color: var(--semi-drak);
+    margin-bottom: 50px;
+    padding: 24px;
+    border-radius: 13px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.my-button:hover{
+    box-shadow: inset 1px 1px 5px 5px var(--drak);
+    background-color: #5d6363;
+    cursor: pointer;
 }

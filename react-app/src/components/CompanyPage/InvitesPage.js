@@ -17,6 +17,7 @@ export default function InvitesPage(){
     const [validationsObj,setValidationObj] = useState({...cleanInviteObj,errors:false})
     const [submitted,setSubmitted] = useState(false)
     const [key,setKey] = useState('')
+    const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
         dispatch(getInvites())
@@ -48,8 +49,11 @@ export default function InvitesPage(){
         }
         const res = await dispatch(createInvite(newInvite))
         if(res){
+            setErrors(res);
+        }else{
+            setErrors(()=>[])
             setKey(()=>newKey)
-            console.log(res)
+            // console.log(res)
         }
     }
 
@@ -63,7 +67,7 @@ export default function InvitesPage(){
                             <button className='create-button' onClick={()=>history.push('/dashboard/company/invites/new')}><i class="fa-solid fa-plus"></i>  Invite User</button>
                         </div>
                         {invites && invites.map(el=>(
-                            <InviteTile invite={el} />
+                            <InviteTile key={el.id} invite={el} />
                         ))}
                     </div>
                 </Route>
@@ -99,7 +103,13 @@ export default function InvitesPage(){
                                 </small></p>
                                 <input type='text' disabled={true} value={key}></input>
                             </div>
-                            <div></div>
+                            <div>
+                                <ul>
+			                        {errors.map((error, idx) => (
+			                        	<li style={{listStyle: 'none',color: 'red'}} key={idx}>{error}</li>
+			                        ))}
+			                    </ul>
+                            </div>
                         </div>
                         </div>
                     </div>

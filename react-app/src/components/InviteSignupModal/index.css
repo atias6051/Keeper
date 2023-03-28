@@ -6,3 +6,26 @@
     display: flex;
     flex-direction: column;
 }
+#invite-signup-modal small{
+    color: red;
+}
+#invite-signup-modal input{
+    font-size: 1.5rem;
+    padding: 5px 0;
+    margin: 3px;
+}
+#invite-signup-modal span{
+    font-weight: 400;
+}
+#invite-signup-modal h3{
+    margin-bottom: 10px;
+}
+
+.disabled-button{
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    background-color: #7b8282;
+    color: rgb(255, 255, 255);
+    transition: all 0.2s ease-in;
+}

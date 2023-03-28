@@ -22,12 +22,12 @@
   display: flex;
   align-items: center;
   margin-right: 20px;
+  filter: saturate(100%);
   font-size: 1.2rem;
-  filter: saturate(0%);
   transition: all 0.3s ease-in-out;
 }
 #comp-name:hover{
-  filter: saturate(100%);
+  filter: saturate(0%);
   color: var(--lightest);
 }
 .gear-style{

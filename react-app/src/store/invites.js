@@ -26,11 +26,18 @@ export const createInvite = invite => async(dispatch) => {
 		method: 'POST',
         body: JSON.stringify(invite)
 	})
-	if(!res.ok) return {'message': 'invite issue'}
-	const newInvite = await res.json()
-	dispatch(getInvites())
 
-	return res
+	if(res.ok){
+		dispatch(getInvites())
+		return null
+	}else if (res.status < 500) {
+		const data = await res.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
 }
 
 export const deleteInvite = inviteId => async(dispatch) =>{

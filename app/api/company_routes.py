@@ -6,6 +6,16 @@ from flask_login import current_user, login_user, logout_user
 
 company_routes = Blueprint('company', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 @company_routes.route('')
 @login_required
 def get_company():
@@ -21,9 +31,9 @@ def get_company():
 @login_required
 def update_company_info():
     comp = Company.query.get(current_user.company_id)
-    if not current_user.admin:
-        return jsonify({"message":"Forbidden! Only admin can update business info!",
-                 "statuscode": "404"}),404
+    # if not current_user.admin:
+    #     return jsonify({"message":"Forbidden! Only admin can update business info!",
+    #              "statuscode": "404"}),404
     company_data=request.get_json()
     comp.name = company_data.get('name', comp.name)
     comp.phone = company_data.get('phone', comp.phone)
@@ -70,7 +80,7 @@ def create_new_company():
             "user": user_login.to_dict(),
             "company": company.to_dict_admin()
         })
-    return jsonify({'errors': form.errors})
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @company_routes.route('',methods=['DELETE'])
 @login_required
