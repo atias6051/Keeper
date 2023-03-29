@@ -167,3 +167,89 @@ input[type="number"]::-webkit-inner-spin-button {
 #date-input{
     font-family: 'Montserrat', sans-serif;
 }
+
+.estimate-buttons-buttom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-estimate-button{
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    background-color: #2e4f4f;
+    color: white;
+    transition: all 0.2s ease-in;
+}
+.delete-estimate-button:hover{
+    cursor: pointer;
+    background-color: red;
+}
+.discount-estimate{
+    font-size: 1.5rem;
+    width: 10vw;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 1px 5px;
+}
+.totals-div{
+    margin: 15px 0;
+}
+.title-div{
+    position: relative;
+}
+.saved-div-abs{
+    position: absolute;
+    background-color: bisque;
+    bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.saved-div-abs.show {
+    opacity: 1;
+}
+.customer-required{
+    position: absolute;
+    /* margin: auto; */
+    top: 45px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.customer-required.show{
+    opacity: 1;
+}
+
+.customers-modal{
+    padding: 15px;
+    width: 40vw;
+    height: 60vh;
+    overflow-y: scroll;
+}
+.quick-tile{
+    margin: 4px 0;
+    background-color: var(--gray);
+    border: 1px solid gray;
+    border-radius: 2px;
+    padding: 3px;
+}
+.searchbar-container{
+    position: relative;
+    width: fit-content;
+}
+.search-icon{
+    position: absolute;
+    right: 5px;
+    top: 8px;
+}
+.searchbar-container input{
+    font-size: 1.5rem;
+    padding: 3px;
+}

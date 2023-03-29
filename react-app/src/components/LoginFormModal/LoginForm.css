@@ -1,0 +1,13 @@
+.login-form-container{
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    align-items: center;
+    padding: 15px;
+    /* height: 40vh; */
+}
+.login-form-container label{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
