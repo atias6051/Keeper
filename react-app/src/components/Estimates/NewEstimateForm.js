@@ -40,6 +40,8 @@ export default function NewEstimateForm({customer}){
     const [date,setDate] = useState(new Date().toISOString().slice(0,10))
     const [submitted,setSubmitted] = useState(false)
     const [created,setCreated] = useState(false)
+    const [showSavedMessage, setShowSavedMessage] = useState(false);
+    const [customerMessage,setCustomerMessage] = useState(false)
 
 
     useEffect(()=>{
@@ -50,7 +52,6 @@ export default function NewEstimateForm({customer}){
 
     useEffect(()=>{
         if(id && estimate && customers){
-            console.log("ESTIAMTE___>",estimate)
             setCustomerInfo(()=>customers.find(el=>el.id===estimate.customerId))
             setServiceList(()=>estimate.services)
             setDate(()=> dateForInput(estimate.date))
@@ -127,7 +128,13 @@ export default function NewEstimateForm({customer}){
 
     const handleSubmit = async e =>{
         setSubmitted(()=>true)
-        if(!customerInfo) return
+        if(!customerInfo){
+            setCustomerMessage(()=>true);
+            setTimeout(() => {
+              setCustomerMessage(()=>false);
+            }, 3000);
+            return
+        }
         if(JSON.stringify(serviceList) === JSON.stringify({1:emptyServiceObj})) return
         const estimateObj = {
             customerId: customerInfo.id,
@@ -138,11 +145,14 @@ export default function NewEstimateForm({customer}){
         let est
         if(id){
             est = await dispatch(updateEstimate({...estimateObj,id:estimate,id}))
+            setShowSavedMessage(()=>true);
+            setTimeout(() => {
+              setShowSavedMessage(()=>false);
+            }, 3000);
         }else{
             est = await dispatch(postEstimate(estimateObj))
-            console.log('----->>><<<<==--', est)
+            history.push(`/dashboard/estimates/${est.id}`)
         }
-        history.push(`/dashboard/estimates/${est.id}`)
     }
 
 
@@ -159,7 +169,10 @@ export default function NewEstimateForm({customer}){
                         <small>{company.city}, {company.state}</small>
                     </span>
                 </div>
-                <p>New Estimate</p>
+                <div className='title-div'>
+                    <p>New Estimate</p>
+                    <div className={`saved-div-abs ${showSavedMessage ? 'show' : ''}`}>Saved!</div>
+                </div>
                 <div id="estimate-customer-info">
                     {customerInfo?(
                         <div className='customer-info-box'>
@@ -169,6 +182,7 @@ export default function NewEstimateForm({customer}){
                             <small>{customerInfo.address}</small>
                         </div>
                     ):(
+                        <div className='title-div'>
                         <OpenModalButton
                             modalComponent={
                             <EstimateCustomerModal
@@ -178,6 +192,10 @@ export default function NewEstimateForm({customer}){
                             buttonText="+ Add Customer"
                             nameClass="add-customer-estimate"
                         />
+                            <div className={`customer-required ${customerMessage? 'show':''}`} >
+                                Customer required
+                            </div>
+                        </div>
                     )}
                     <label>
                         <small>Date   </small>
@@ -216,21 +234,25 @@ export default function NewEstimateForm({customer}){
                     <button className='create-button' onClick={addService}>Add Service</button>
                     {id?(<button className='create-button' onClick={reserServices}>Reset Services</button>):(<div></div>)}
                 </div>
-                <div>
-                    <input type='number' value={discount} onChange={e=>setDiscount(e.target.value)} />
-                    <p>{`Total: ${total}`}</p>
+                <div className='totals-div'>
+                    <label>Discount</label>
+                    <input className="discount-estimate" type='number' value={discount} onChange={e=>setDiscount(e.target.value)} />
+                    <p>{`Total: `}<strong>${total}</strong></p>
                 </div>
-                <button onClick={handleSubmit}>Save</button>
+                <div className='estimate-buttons-buttom'>
+
+                <button className='create-button' onClick={handleSubmit}>Save</button>
                 {id && (
                     <OpenModalButton
                     modalComponent={
                         <DeleteEstimateModal
-                            id={id}
+                        id={id}
                         />}
                         buttonText="Delete Estimate"
                         nameClass="delete-estimate-button"
-                    />
-                )}
+                        />
+                        )}
+                </div>
             </div>
         </div>
     )

@@ -71,11 +71,11 @@ export default function SignUpPage(){
                     </div>
                     <div>
                         {
-                        approved?
+                            approved?
                             <OpenModalButton
-                                modalComponent={<InviteSignupModal invite={invite}/>}
-                                buttonText="continue to sign up"
-                                nameClass={classTest}
+                            modalComponent={<InviteSignupModal invite={invite}/>}
+                            buttonText="continue to sign up"
+                            nameClass={classTest}
                             />
                             : ""
                         }

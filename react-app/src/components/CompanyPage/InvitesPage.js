@@ -18,6 +18,7 @@ export default function InvitesPage(){
     const [submitted,setSubmitted] = useState(false)
     const [key,setKey] = useState('')
     const [errors, setErrors] = useState([]);
+    const [showMessage,setShowMessage] = useState(false)
 
     useEffect(()=>{
         dispatch(getInvites())
@@ -53,6 +54,11 @@ export default function InvitesPage(){
         }else{
             setErrors(()=>[])
             setKey(()=>newKey)
+            setShowMessage(()=>true);
+            setTimeout(() => {
+              setShowMessage(()=>false);
+            }, 3000);
+            return
             // console.log(res)
         }
     }
@@ -82,26 +88,27 @@ export default function InvitesPage(){
                         <form id='new-invite-form' onSubmit={newInviteSubmit}>
                         <label>
                             Email {submitted && validationsObj.errors && validationsObj.email ? (<span>{validationsObj.email}</span>):''}
-                            <input name='email' value={inviteObj.email} onChange={handleChange} type='text'/>
+                            <input className="invite-new-input" name='email' value={inviteObj.email} onChange={handleChange} type='text'/>
                         </label>
                         <label>
                             First Name {submitted && validationsObj.errors && validationsObj.firstName ? (<span>{validationsObj.firstName}</span>):''}
-                            <input name='firstName' value={inviteObj.firstName} onChange={handleChange} type='text'/>
+                            <input className="invite-new-input" name='firstName' value={inviteObj.firstName} onChange={handleChange} type='text'/>
                         </label>
                         <label>
                             Last Name {submitted && validationsObj.errors && validationsObj.lastName ? (<span>{validationsObj.lastName}</span>):''}
-                            <input name='lastName' value={inviteObj.lastName} onChange={handleChange} type='text'/>
+                            <input className="invite-new-input" name='lastName' value={inviteObj.lastName} onChange={handleChange} type='text'/>
                         </label>
                             <button className='create-button' type='submit'>Invite User</button>
                         </form>
                         <div id="activation-code-container">
-                            <p>Activation code</p>
-                            <div>
+                            <h3>Activation code</h3>
+                            <div className='key-container'>
+                                <p className={`message-p ${showMessage? 'show':''}`}>Invite Created</p>
                                 <p><small>Please keep this activation code<br/>
                                 If you lose this code you will need to create<br/>
                                 a new invite for this user
                                 </small></p>
-                                <input type='text' disabled={true} value={key}></input>
+                                <input type='text' className='sercet-key-input' disabled={true} value={key}></input>
                             </div>
                             <div>
                                 <ul>
