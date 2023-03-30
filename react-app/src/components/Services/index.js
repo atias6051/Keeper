@@ -12,6 +12,7 @@ export default function Services(){
     const dispatch = useDispatch()
     const location = useLocation()
     const history = useHistory()
+    const [searchTerm,setSearchTerm] = useState('')
 
     useEffect(()=>{
       dispatch(getServices())
@@ -24,13 +25,17 @@ export default function Services(){
       }
     },[location])
 
+    const filterSearch = (el,term) => {
+      return new RegExp(term, 'gi').test(el)
+    }
+
     if(!services) return null
     return (
         <section id="all-services">
             <div id="services-navbar">
                 <div className='search-container'>
-                    <input className="search-bar" type="text"></input>
-                    <i class="fa-solid fa-magnifying-glass marg15-l"></i>
+                    <input placeholder="Search service..." value={searchTerm} onChange={e=>setSearchTerm(e.target.value)} className="search-bar" type="text"></input>
+                    <i class="fa-solid fa-magnifying-glass marg15-l search-mag"></i>
                 </div>
                 <h3>SERVICES</h3>
                 <button onClick={()=>history.push('/dashboard/services/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Service</button>
@@ -38,7 +43,7 @@ export default function Services(){
             <Switch>
               <Route exact path="/dashboard/services">
                 <div className='tile-display'>
-                  {services && services.sort((a, b) => a.name.localeCompare(b.name)).map(el=>(
+                  {services && services.filter(el=>filterSearch(el.name,searchTerm)).sort((a, b) => a.name.localeCompare(b.name)).map(el=>(
                     <ServiceTile key={el.id} service={el} />
                     ))}
                     {services && services.length === 0?(<p>Add your services</p>):''}

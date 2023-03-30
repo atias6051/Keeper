@@ -162,3 +162,10 @@ body {
     transform: rotate(360deg);
   }
 }
+.search-container{
+    position: relative;
+}
+.search-mag{
+    position: absolute;
+    right: 5px;
+}
