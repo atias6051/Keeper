@@ -22,7 +22,7 @@ export default function Estimates(){
         dispatch(getCustomers())
     },[dispatch,location])
 
-    if(!estimates) return null
+    if(!estimates) return (<div className='loading-wheel'/>)
     return (
         <section id="all-services">
             <div id="services-navbar">
@@ -36,6 +36,7 @@ export default function Estimates(){
             <Switch>
               <Route exact path="/dashboard/estimates">
                 <div className='tile-display'>
+                  {estimates.length===0? (<p>You have no estimates</p>):''}
                   {estimates && estimates.sort((a, b) => new Date(b.date) - new Date(a.date)).map(el=>(
                     <NavLink key={el.id} className='no-dec' to={`/dashboard/estimates/${el.id}`}>
                         <EstimateTile estimate={el} />

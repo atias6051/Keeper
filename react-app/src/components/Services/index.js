@@ -41,6 +41,7 @@ export default function Services(){
                   {services && services.sort((a, b) => a.name.localeCompare(b.name)).map(el=>(
                     <ServiceTile key={el.id} service={el} />
                     ))}
+                    {services && services.length === 0?(<p>Add your services</p>):''}
                 </div>
               </Route>
               <Route path='/dashboard/services/new'>
