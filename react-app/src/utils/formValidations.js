@@ -111,6 +111,10 @@ export const inviteSignupValidation = invite => {
         errorsObj.password = "Passwords required"
         errorsObj.errors = true
     }
+    if(invite.password.length < 6){
+        errorsObj.password = "Passwords must be at least 6 characters long"
+        errorsObj.errors = true
+    }
     if(invite.password !== invite.passwordConfirm){
         errorsObj.password = "Passwords dont match"
         errorsObj.errors = true
@@ -314,6 +318,39 @@ export const companySingupValidations = (signupObj) => {
     }
     if(!validLogoUrl(logoUrl)){
         errorsObj.logoUrl = "company logo url must be jpg, jpeg, png or gif"
+        errorsObj.errors = true
+    }
+
+    return errorsObj
+}
+
+
+export const userValidation = user => {
+    let errorsObj = {
+        errors: false
+    }
+    if(!user.firstName.length){
+        errorsObj.firstName = "User must have a name"
+        errorsObj.errors = true
+    }
+    if(user.firstName.length > 100){
+        errorsObj.firstName = "User first name must be less than 100 characters"
+        errorsObj.errors = true
+    }
+    if(!user.lastName.length){
+        errorsObj.lastName = "User must have a name"
+        errorsObj.errors = true
+    }
+    if(user.lastName.length > 100){
+        errorsObj.lastName = "User last name must be less than 100 characters"
+        errorsObj.errors = true
+    }
+    if(!user.phone.length){
+        errorsObj.phone = "Phone number is required"
+        errorsObj.errors = true
+    }
+    if(user.phone.length < 6 ||user.phone.length > 12 ){
+        errorsObj.phone = "Phone number must be between 6-12 digits"
         errorsObj.errors = true
     }
 

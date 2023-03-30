@@ -273,3 +273,25 @@
     font-size: 1.5rem;
     background-color: red;
 }
+
+.logo-change-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    width: 25vw;
+}
+.logo-change-modal *{
+    margin: 8px 2px
+}
+.logo-change-modal label{
+    font-weight: 700;
+}
+.logo-change-modal input{
+    width: 100%;
+}
+.logo-change-modal span{
+    color: red;
+    font-size: 1.2rem;
+}

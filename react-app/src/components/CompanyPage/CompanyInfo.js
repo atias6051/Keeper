@@ -6,9 +6,12 @@ import Customers from '../Customers';
 import { companyValidations } from '../../utils/formValidations';
 import './index.css'
 import { updateCompanyInfo } from '../../store/company';
+import { useModal } from '../../context/Modal';
+import LogoChangeModal from './LogoChangeModal';
 
 export default function CompanyInfo(){
     const history = useHistory()
+    const { setModalContent, setOnModalClose } = useModal();
     const user = useSelector(state=>state.session.user)
     const company = useSelector(state=>state.company.company)
     const dispatch = useDispatch()
@@ -61,11 +64,16 @@ export default function CompanyInfo(){
         setCompanyInfo(()=>ogState)
     }
 
+    const handleLogoChange = () =>{
+        setModalContent(<LogoChangeModal companyInfo={companyInfo} setCompanyInfo={setCompanyInfo}/>)
+    }
+
     const handleSubmit = async(e)=> {
         setSubmitted(()=>true)
         if(validationErrors.errors) return
         console.log("good to submit!")
-        await dispatch(updateCompanyInfo(companyInfo))
+        let newObj = {...companyInfo,logo_url:companyInfo.logoUrl}
+        await dispatch(updateCompanyInfo(newObj))
         setOgState(()=>companyInfo)
         setChanged(()=>false)
     }
@@ -79,7 +87,7 @@ export default function CompanyInfo(){
                     <div className='logo-info-container'>
                         <p>Logo</p>
                         <img id="info-page-logo" src={companyInfo.logoUrl} />
-                        <button className='hov' id="change-logo-button" >Chnage logo url</button>
+                        <button onClick={handleLogoChange}className='hov' id="change-logo-button" >Chnage logo url</button>
                     </div>
                 </div>
                 <div>
@@ -106,8 +114,8 @@ export default function CompanyInfo(){
                     <div className='info-form-buttons-div'>
                         {changed?(
                             <>
-                            <button onClick={handleSubmit}>Save Changes</button>
-                            <button onClick={resetInfo}>Reset Info</button>
+                            <button className='create-button marg15-t' onClick={handleSubmit}>Save Changes</button>
+                            <button className='create-button marg15-t' onClick={resetInfo}>Reset Info</button>
                             </>
                         ):""}
                     </div>

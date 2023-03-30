@@ -59,7 +59,6 @@ export default function InvitesPage(){
               setShowMessage(()=>false);
             }, 3000);
             return
-            // console.log(res)
         }
     }
 

@@ -1,3 +1,5 @@
+import { removeComapny } from "./company";
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -24,7 +26,6 @@ export const authenticate = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-
 		dispatch(setUser(data));
 	}
 };
@@ -56,6 +57,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
+	dispatch(removeComapny())
 	const response = await fetch("/api/auth/logout", {
 		headers: {
 			"Content-Type": "application/json",

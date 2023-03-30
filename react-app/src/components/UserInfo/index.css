@@ -1,0 +1,42 @@
+.user-icon{
+    /* padding: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    /* font-weight: bold; */
+    background-color: var(--drak);
+    color: white;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+.user-title-div{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 15px;
+}
+.user-title-div h2{
+    margin-left: 5px;
+}
+.personal-input-div{
+    display: flex;
+    flex-direction: column;
+}
+.personal-input-div input{
+    font-size: 1.5rem;
+    padding: 3px;
+}
+.personal-input-div label{
+    margin: 5px 0;
+}
+.user-info-input-section{
+    width: 25vw;
+}
+.user-info-buttons{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+}

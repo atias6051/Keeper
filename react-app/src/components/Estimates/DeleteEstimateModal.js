@@ -21,8 +21,10 @@ export default function DeleteEstimateModal({id}){
             <p>Deleting this estimate will permenantly remove<br/>
             this record and it can not be restored<br/>
             Are you sure you want to delete this estimate?</p>
-            <button onClick={handleDelete}>Yes</button>
-            <button onClick={closeModal}>No</button>
+            <div className="delete-estimate-buttons">
+                <button className="delete-customer hov" onClick={handleDelete}>Yes (Delete estimate)</button>
+                <button className="keep-button hov" onClick={closeModal}>No (Keep estimate)</button>
+            </div>
         </div>
     )
 }

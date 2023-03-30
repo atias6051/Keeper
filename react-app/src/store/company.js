@@ -8,7 +8,7 @@ const setComapny = company => ({
     type: SET_COMPANY,
     payload: company
 })
-const removeComapny = () => ({
+export const removeComapny = () => ({
     type: REMOVE_COMPANY
 })
 
@@ -74,7 +74,7 @@ export default function reducer(state = initialState, action) {
 		case SET_COMPANY:
 			return { company: action.payload };
         case REMOVE_COMPANY:
-            return {company: null}
+            return {...state,company: null}
 		default:
 			return state;
 	}

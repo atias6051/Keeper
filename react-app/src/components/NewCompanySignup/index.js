@@ -18,22 +18,22 @@ export default function NewCompanySignup(){
     const [logoInput,setLogoInput] = useState('')
     const [submitted, setSubmitted] = useState(false)
     const [validationErrors,setValidationErrors] = useState({...signupTemplateObj,errors:false})
-    const [usePhone,setUsephone] = useState(false)
+    // const [usePhone,setUsephone] = useState(false)
     const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
         setValidationErrors(()=>companySingupValidations(signupObj))
     },[signupObj])
 
-    useEffect(()=>{
-        if(usePhone){
-            let newObj = {
-                ...signupObj,
-                businessPhone: signupObj.phone
-            }
-            setSignObj(()=>newObj)
-        }
-    },[usePhone,signupObj])
+    // useEffect(()=>{
+    //     if(usePhone){
+    //         let newObj = {
+    //             ...signupObj,
+    //             businessPhone: signupObj.phone
+    //         }
+    //         setSignObj(()=>newObj)
+    //     }
+    // },[usePhone])
 
     const changeLogo = () =>{
         let newLogo = logoInput
@@ -56,6 +56,7 @@ export default function NewCompanySignup(){
     }
 
     const handleSubmit = async(e) => {
+        console.log(signupObj)
         setSubmitted(()=>true)
         if(validationErrors.errors) return
         const submitObj = {
@@ -119,11 +120,11 @@ export default function NewCompanySignup(){
                         </div>
                         <div className='personal-info-input-container'>
                         <label>Company Phone Number {submitted && validationErrors.errors && validationErrors.businessPhone?(<span>{validationErrors.businessPhone}</span>):''}</label>
-                        <input disabled={usePhone} name='businessPhone' value={usePhone? signupObj.phone :signupObj.businessPhone} onChange={handleChange} type='number' />
-                        <label>
-                            <input checked={usePhone} onChange={()=>setUsephone(usePhone=>!usePhone)} type='checkbox' />
+                        <input name='businessPhone' value={signupObj.businessPhone} onChange={handleChange} type='number' />
+                        {/* <label>
+                            <input  onChange={()=>setUsephone(usePhone=>!usePhone)} type='checkbox' />
                             <small>Use my personal phone number</small>
-                        </label>
+                        </label> */}
                         </div>
                         <div className='personal-info-input-container'>
                         <label>Address {submitted && validationErrors.errors && validationErrors.address?(<span>{validationErrors.address}</span>):''}</label>

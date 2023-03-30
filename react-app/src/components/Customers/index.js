@@ -69,6 +69,7 @@ export default function Customers(){
                         ))}
                         </div>
                     ))}
+                    {sortedCustomers && Object.keys(sortedCustomers).length === 0?(<p>You have no customers records</p>):''}
                 </div>
                 </Route>
                 <Route path="/dashboard/customers/new">
