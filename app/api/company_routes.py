@@ -93,3 +93,9 @@ def delete_company():
     db.session.delete(comp)
     db.session.commit()
     return {"message": "Business and user account successfully deleted"}
+
+@company_routes.route('/stats')
+@login_required
+def get_stats():
+    comp = Company.query.get(current_user.company_id)
+    return jsonify(comp.stats())

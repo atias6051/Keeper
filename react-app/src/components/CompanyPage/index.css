@@ -295,3 +295,13 @@
     color: red;
     font-size: 1.2rem;
 }
+.delete-invite-modal{
+    padding: 15px;
+}
+.delete-invite-modal button{
+    margin: 10px;
+    margin-bottom: 0px;
+}
+.delete-invite-modal p{
+    font-weight: 500;
+}

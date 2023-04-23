@@ -9,19 +9,18 @@ export default function DeleteInviteModal({invite}) {
     const dispatch = useDispatch()
 
     const handleDelete = async() =>{
-        console.log('invite id ------>', invite.id)
         await dispatch(deleteInvite(invite.id))
         closeModal()
     }
 
     return (
-        <div>
+        <div className='delete-invite-modal'>
             <p>Deleting this invite will<br/>
             remove email from access to this company<br/>
             <small>Are you sure you want to procceed?</small></p>
             <div>
-                <button onClick={handleDelete}>Yes (Delete Invite)</button>
-                <button onClick={closeModal}>No (Keep Invite)</button>
+                <button className="delete-estimate-button" onClick={handleDelete}>Yes (Delete Invite)</button>
+                <button className="create-button" onClick={closeModal}>No (Keep Invite)</button>
             </div>
         </div>
     )
