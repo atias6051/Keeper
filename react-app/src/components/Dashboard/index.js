@@ -12,7 +12,7 @@ export default function Dashboard(){
     const user = useSelector(state => state.session.user);
     const company = useSelector(state => state.company.company)
     const dispatch = useDispatch()
-    const [citiesChartData,setCitiesChartData] = useState(null)
+    // const [citiesChartData,setCitiesChartData] = useState(null)
 
 
 
@@ -26,21 +26,21 @@ export default function Dashboard(){
         }
     },[user])
 
-    useEffect(()=>{
-        if(!company) return
-        let citiesStats = Object.entries(company.stats.cities_stats).sort((a,b)=>b[1]-a[1]).slice(0,3)
+    // useEffect(()=>{
+    //     if(!company) return
+    //     let citiesStats = Object.entries(company.stats.cities_stats).sort((a,b)=>b[1]-a[1]).slice(0,3)
 
-        const newData = {
-            labels: citiesStats.map(el=>el[0]),
-            datasets:[{
-                data: citiesStats.map(el=>el[1]),
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-                // borderWidth: 12,
-            }]
-        }
-        setCitiesChartData(()=>newData)
-    },[company])
+    //     const newData = {
+    //         labels: citiesStats.map(el=>el[0]),
+    //         datasets:[{
+    //             data: citiesStats.map(el=>el[1]),
+    //             backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+    //             hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+    //             // borderWidth: 12,
+    //         }]
+    //     }
+    //     setCitiesChartData(()=>newData)
+    // },[company])
 
 
     const UserData = [
@@ -107,12 +107,12 @@ export default function Dashboard(){
         <section id="dashboard-section">
             <h1>{`Welcome ${user.firstName} ${user.lastName}`}</h1>
             <div id="stats-grid">
-            <div className='test-chart'>
+            {/* <div className='test-chart'>
                 <p>Customer City Distribution (Top 3)</p>
                 {citiesChartData && (<CitiesChart chartData={citiesChartData} />) }
-                {/* <CitiesChart chartData={citiesChartData} /> */}
-                {/* <TestComp chartData={chartData2}/> */}
-            </div>
+                <CitiesChart chartData={citiesChartData} />
+                <TestComp chartData={chartData2}/>
+            </div> */}
             <div className='test-chart'>
                 <p>Test data2</p>
                 <TestComp chartData={chartData2}/>
