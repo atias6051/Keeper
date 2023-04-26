@@ -15,7 +15,6 @@ export default function Customers(){
     const history = useHistory()
     const location = useLocation()
     const [sortedCustomers,setSortedCustomers] = useState(null)
-    const [search,setSearch] = useState('')
 
     useEffect(() => {
         dispatch(getCustomers());
@@ -28,13 +27,9 @@ export default function Customers(){
         }
     },[location])
 
-    const filterSearch = (el,term) => {
-        return new RegExp(term, 'gi').test(el)
-    }
-
     useEffect(()=>{
         if(customers){
-            const groupedCustomers = customers.filter(el=>filterSearch(el.name,search)).map((customer) => ({
+            const groupedCustomers = customers.map((customer) => ({
                 ...customer,
                 firstLetter: customer.name.charAt(0).toUpperCase(),
                 })).reduce((acc, customer) => {
@@ -46,7 +41,7 @@ export default function Customers(){
             }, {})
             setSortedCustomers(() => groupedCustomers)
         }
-    },[customers,location,search])
+    },[customers,location])
     // },[customers,singleCustomer,location])
 
 
@@ -54,12 +49,19 @@ export default function Customers(){
     return (
         <section id="all-customers">
             <div id="customers-navbar">
+<<<<<<< HEAD
                 {location.pathname === '/dashboard/customers'?(
                     <div className='search-container'>
                         <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="search customer..." className="search-bar" type="text"></input>
                         <i class="fa-solid fa-magnifying-glass marg15-l search-mag"></i>
                     </div>
                 ):(<div className='w-5vw'></div>)}
+=======
+                <div className='search-container'>
+                    <input className="search-bar" type="text"></input>
+                    <i class="fa-solid fa-magnifying-glass marg15-l"></i>
+                </div>
+>>>>>>> parent of 4603ba5 (more stuff)
                 <h3>CUSTOMERS</h3>
                 <button onClick={()=>history.push('/dashboard/customers/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Customer</button>
             </div>
@@ -76,7 +78,7 @@ export default function Customers(){
                         ))}
                         </div>
                     ))}
-                    {sortedCustomers && Object.keys(sortedCustomers).length === 0 && customers.length === 0?(<p>You have no customers records</p>):''}
+                    {sortedCustomers && Object.keys(sortedCustomers).length === 0?(<p>You have no customers records</p>):''}
                 </div>
                 </Route>
                 <Route path="/dashboard/customers/new">
