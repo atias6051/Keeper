@@ -90,7 +90,9 @@ body {
     color: #2e4f4f;
 
 }
-
+.w-5vw{
+    width: 5vw;
+}
 .search-bar{
     border-radius: 8px;
     padding: 5px 15px;

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Switch, Route, useHistory, useLocation } from 'react-router-dom';
-
 import { userValidation } from '../../utils/formValidations';
 import './index.css'
+import { updateUserInfo } from '../../store/session';
 
 export default function UsersInfo(){
     const user = useSelector(state=>state.session.user)
@@ -14,6 +13,7 @@ export default function UsersInfo(){
     const [submitted,setSubmitted] = useState(false)
     const [email,setEmail] = useState('')
     const [changed,setChanged] = useState(false)
+    const dispatch = useDispatch()
 
     useEffect(()=>{
         if(user){
@@ -52,6 +52,15 @@ export default function UsersInfo(){
 
     const handleSubmit = async e =>{
         setSubmitted(()=>true)
+        if(validationErrors.errors) return
+        let submitObj = {
+            id: user.id,
+            first_name: userInfo.firstName,
+            last_name: userInfo.lastName,
+            phone: userInfo.phone,
+        }
+        await dispatch(updateUserInfo(submitObj))
+
     }
 
     if(!user) return null

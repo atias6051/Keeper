@@ -29,10 +29,12 @@ export default function Estimates(){
     return (
         <section id="all-services">
             <div id="services-navbar">
+              {location.pathname === '/dashboard/estimates'?(
                 <div className='search-container'>
                     <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search estimate..." className="search-bar" type="text"></input>
                     <i class="fa-solid fa-magnifying-glass marg15-l search-mag"></i>
                 </div>
+              ):(<div className='w-5vw'></div>)}
                 <h3>ESTIMATES</h3>
                 <button onClick={()=>history.push('/dashboard/estimates/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Estimate</button>
             </div>

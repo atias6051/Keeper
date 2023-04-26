@@ -33,10 +33,12 @@ export default function Services(){
     return (
         <section id="all-services">
             <div id="services-navbar">
+              {location.pathname === '/dashboard/services'?(
                 <div className='search-container'>
                     <input placeholder="Search service..." value={searchTerm} onChange={e=>setSearchTerm(e.target.value)} className="search-bar" type="text"></input>
                     <i class="fa-solid fa-magnifying-glass marg15-l search-mag"></i>
                 </div>
+              ):(<div className='w-5vw'></div>)}
                 <h3>SERVICES</h3>
                 <button onClick={()=>history.push('/dashboard/services/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Service</button>
             </div>
