@@ -14,8 +14,8 @@ export default function CustomerInfo(){
     const customer = useSelector(state=>state.customer.singleCustomer)
     const cleanObject = {name: '',phone: '',email: '',address: '',city: '',state: ''}
     const [ogState,setOgState] = useState({})
-    const [infoObj,setInfoObj] = useState(cleanObject)
     const [changed,setChanged] = useState(false)
+    const [infoObj,setInfoObj] = useState(cleanObject)
     const [validationErrors, setValidationErrors] = useState({...cleanObject,errors:false})
     const [submitted,setSubmitted] = useState(false)
 
