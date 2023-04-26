@@ -12,7 +12,7 @@ def seed_users():
         admin=True,
         phone='5105115123',
         company_id=1
-        )
+    )
     demo2 = User(
         email='demo2@aa.io',
         password='password',
@@ -20,10 +20,28 @@ def seed_users():
         last_name='Demo2',
         phone='5105115124',
         company_id=1
-        )
+    )
+    demo3 = User(
+        email='demo3@aa.io',
+        password='password',
+        first_name='Christina',
+        last_name='Demo',
+        phone='5105119824',
+        company_id=1
+    )
+    demo4 = User(
+        email='demo4@aa.io',
+        password='password',
+        first_name='Justin',
+        last_name='Demo',
+        phone='5105119774',
+        company_id=1
+    )
 
     db.session.add(demo)
     db.session.add(demo2)
+    db.session.add(demo3)
+    db.session.add(demo4)
     db.session.commit()
 
 
