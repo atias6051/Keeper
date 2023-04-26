@@ -30,7 +30,7 @@ def seed_estimates():
         owner_id=2,
         company_id=1,
         customer_id=3,
-        services= '{"1":{"id":1,"companyId":1,"name":"Basic Carpet Cleaning","description":"Basic carpet cleaning using our X45 carpet cleaner. \\nPrice per sq.ft","price":1.55,"quantity":200},"2":{"id":3,"companyId":1,"name":"Carpet patch","description":"Patch and repair carpet damage.\\nPrice per hole/damaged spot up to 1 sq.ft","price":250,"quantity":3},"3":{"id":4,"companyId":1,"name":"Carpet protection plan","description":"1 year protection plan for all carpet area deep cleaned","price":350,"quantity":1}}',
+        services= '{"1":{"id":1,"companyId":1,"name":"Basic Carpet Cleaning","description":"Basic carpet cleaning using our X45 carpet cleaner. \\nPrice per sq.ft","price":1.55,"quantity":200},"3":{"id":3,"companyId":1,"name":"Carpet patch","description":"Patch and repair carpet damage.\\nPrice per hole/damaged spot up to 1 sq.ft","price":250,"quantity":3},"4":{"id":4,"companyId":1,"name":"Carpet protection plan","description":"1 year protection plan for all carpet area deep cleaned","price":350,"quantity":1}}',
         discount=150,
         date='19/7/2023'
     )
