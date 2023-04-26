@@ -54,10 +54,12 @@ export default function Customers(){
     return (
         <section id="all-customers">
             <div id="customers-navbar">
-                <div className='search-container'>
-                    <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="search customer..." className="search-bar" type="text"></input>
-                    <i class="fa-solid fa-magnifying-glass marg15-l search-mag"></i>
-                </div>
+                {location.pathname === '/dashboard/customers'?(
+                    <div className='search-container'>
+                        <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="search customer..." className="search-bar" type="text"></input>
+                        <i class="fa-solid fa-magnifying-glass marg15-l search-mag"></i>
+                    </div>
+                ):(<div className='w-5vw'></div>)}
                 <h3>CUSTOMERS</h3>
                 <button onClick={()=>history.push('/dashboard/customers/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Customer</button>
             </div>
