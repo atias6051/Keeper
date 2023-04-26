@@ -14,7 +14,7 @@ def seed_estimates():
         owner_id=1,
         company_id=1,
         customer_id=1,
-        services= '{"1":{"id":1,"companyId":1,"name":"Basic Carpet Cleaning","description":"Basic carpet cleaning using our X45 carpet cleaner. \\nPrice per sq.ft","price":1.55,"quantity":100},"2":{"id":2,"companyId":1,"name":"Deep Carpet Cleaning","description":"Deep carpet cleaning using our X545 carpet cleaner, capet shampoo and UI-Steamer. \\nPrice per sq.ft","price":2.15,"quantity":50},"4":{"id":4,"companyId":1,"name":"Carpet protection plan","description":"1 year protection plan for all carpet area deep cleaned","price":350,"quantity":1}}',
+        services= '{"1":{"id":1,"companyId":1,"name":"Basic Carpet Cleaning","description":"Basic carpet cleaning using our X45 carpet cleaner. \\nPrice per sq.ft","price":1.55,"quantity":100},"2":{"id":2,"companyId":1,"name":"Deep Carpet Cleaning","description":"Deep carpet cleaning using our X545 carpet cleaner, capet shampoo and UI-Steamer. \\nPrice per sq.ft","price":2.15,"quantity":50},"3":{"id":4,"companyId":1,"name":"Carpet protection plan","description":"1 year protection plan for all carpet area deep cleaned","price":350,"quantity":1}}',
         discount=150,
         date='21/4/2023'
     )
@@ -22,7 +22,7 @@ def seed_estimates():
         owner_id=2,
         company_id=1,
         customer_id=4,
-        services= '{"1":{"id":1,"companyId":1,"name":"Basic Carpet Cleaning","description":"Basic carpet cleaning using our X45 carpet cleaner. \\nPrice per sq.ft","price":1.55,"quantity":500},"2":{"id":2,"companyId":1,"name":"Deep Carpet Cleaning","description":"Deep carpet cleaning using our X545 carpet cleaner, capet shampoo and UI-Steamer. \\nPrice per sq.ft","price":2.15,"quantity":100},"4":{"id":4,"companyId":1,"name":"Carpet protection plan","description":"1 year protection plan for all carpet area deep cleaned","price":350,"quantity":1}}',
+        services= '{"1":{"id":1,"companyId":1,"name":"Basic Carpet Cleaning","description":"Basic carpet cleaning using our X45 carpet cleaner. \\nPrice per sq.ft","price":1.55,"quantity":500},"2":{"id":2,"companyId":1,"name":"Deep Carpet Cleaning","description":"Deep carpet cleaning using our X545 carpet cleaner, capet shampoo and UI-Steamer. \\nPrice per sq.ft","price":2.15,"quantity":100},"3":{"id":4,"companyId":1,"name":"Carpet protection plan","description":"1 year protection plan for all carpet area deep cleaned","price":350,"quantity":1}}}',
         discount=150,
         date='11/5/2023'
     )
