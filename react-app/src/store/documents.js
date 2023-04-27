@@ -105,8 +105,10 @@ export default function reducer(state = initialState, action) {
         case SET_ESTIMATES:
             let parsed = action.payload.map(el=>({...el,services:JSON.parse(el.services)}))
             .map(est=> ({...est,total: sumTotal(est.services)-est.discount}))
-            let invoices = action.payload.filter(el=>el.isInvoice)
-            return {...state,estimates: parsed,invoices: invoices}
+            let estimates = parsed.filter(el=>!el.isInvoice)
+            let invoices = parsed.filter(el=>el.isInvoice)
+
+            return {...state,estimates: estimates,invoices: invoices}
         case SET_SINGLE_DOCUMENT:
             return {...state,
                 singleDocument: {...action.payload,

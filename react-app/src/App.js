@@ -13,6 +13,7 @@ import Services from "./components/Services";
 import ComapnyPage from "./components/CompanyPage";
 import Estimates from "./components/Estimates";
 import NewCompanySignup from "./components/NewCompanySignup";
+import Invoices from "./components/Invoices";
 
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
                 <Estimates />
               </Route>
               <Route path="/dashboard/invoices">
-                <Estimates />
+                <Invoices />
               </Route>
             </Switch>
           </div>
