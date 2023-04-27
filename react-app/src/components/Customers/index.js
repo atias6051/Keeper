@@ -15,6 +15,7 @@ export default function Customers(){
     const history = useHistory()
     const location = useLocation()
     const [sortedCustomers,setSortedCustomers] = useState(null)
+    const [search,setSearch] = useState('')
 
     useEffect(() => {
         dispatch(getCustomers());
@@ -49,19 +50,12 @@ export default function Customers(){
     return (
         <section id="all-customers">
             <div id="customers-navbar">
-<<<<<<< HEAD
                 {location.pathname === '/dashboard/customers'?(
                     <div className='search-container'>
                         <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="search customer..." className="search-bar" type="text"></input>
                         <i class="fa-solid fa-magnifying-glass marg15-l search-mag"></i>
                     </div>
                 ):(<div className='w-5vw'></div>)}
-=======
-                <div className='search-container'>
-                    <input className="search-bar" type="text"></input>
-                    <i class="fa-solid fa-magnifying-glass marg15-l"></i>
-                </div>
->>>>>>> parent of 4603ba5 (more stuff)
                 <h3>CUSTOMERS</h3>
                 <button onClick={()=>history.push('/dashboard/customers/new')} className='create-button'><i class="fa-sharp fa-solid fa-plus"></i>New Customer</button>
             </div>
