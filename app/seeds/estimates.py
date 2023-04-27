@@ -13,7 +13,7 @@ def seed_estimates():
         services_dict = {}
         for i in range(1, random.randint(1, 6)):
             temp = random.choice(services)
-            print("__***____****____****___****____*****___>>", temp)
+            # print("__***____****____****___****____*****___>>", temp)
             if temp['price'] > 10:
                 temp['quantity'] = random.randint(1, 8)
             else:

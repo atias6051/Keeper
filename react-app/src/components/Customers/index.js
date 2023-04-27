@@ -28,9 +28,13 @@ export default function Customers(){
         }
     },[location])
 
+    const filterSearch = (el,term) => {
+        return new RegExp(term, 'gi').test(el)
+    }
+
     useEffect(()=>{
         if(customers){
-            const groupedCustomers = customers.map((customer) => ({
+            const groupedCustomers = customers.filter(el=>filterSearch(el.name,search)).map((customer) => ({
                 ...customer,
                 firstLetter: customer.name.charAt(0).toUpperCase(),
                 })).reduce((acc, customer) => {
@@ -42,7 +46,7 @@ export default function Customers(){
             }, {})
             setSortedCustomers(() => groupedCustomers)
         }
-    },[customers,location])
+    },[customers,location,search])
     // },[customers,singleCustomer,location])
 
 
@@ -72,7 +76,7 @@ export default function Customers(){
                         ))}
                         </div>
                     ))}
-                    {sortedCustomers && Object.keys(sortedCustomers).length === 0?(<p>You have no customers records</p>):''}
+                    {sortedCustomers && Object.keys(sortedCustomers).length === 0 && customers.length === 0?(<p>You have no customers records</p>):''}
                 </div>
                 </Route>
                 <Route path="/dashboard/customers/new">
