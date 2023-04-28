@@ -26,9 +26,10 @@ function Navigation({ isLoaded }){
 				<img id="navbar-logo" src="https://i.imgur.com/ClSNsKh.png" />
 			  </NavLink>
 			</div>
+			{/* <h2>HIHHIHH</h2> */}
 			{sessionUser ? (
 			  <div id="nav-right">
-				{company?(<p onClick={()=>history.push('/dashboard/company')} className='hov' id="comp-name">{company.name}<img id="nav-bar-comp-logo"src={company.logoUrl}/></p>):""}
+				{company?(<p onClick={()=>history.push('/dashboard/company')} className='hov' id="comp-name">{company.name}<img id="nav-bar-comp-logo"src={company.logoUrl}/></p>):"HAHAH"}
 				<button onClick={handleLogout} className='login-nav-button'>Log Out</button>
 			  </div>
 			) : (

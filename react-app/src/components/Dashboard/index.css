@@ -3,8 +3,9 @@
     width: 92vw;
     overflow-y: scroll;
     padding: 25px;
-    height: 100;
+    height: fit-content;
     /* padding-right: 150px; */
+    padding-bottom: 20px;
 }
 
 .test-chart{
@@ -16,7 +17,7 @@
     /* border: 1px solid var(--drak); */
     border-radius: 15px;
     box-shadow: 4px 4px 15px 0px #2c3333;
-    padding: 5px;
+    /* padding: 5px; */
     /* height: 400px; */
 }
 
@@ -24,6 +25,38 @@
     height: 80vh;
     /* overflow-y: scroll; */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr ;
+}
+
+.flex-row-space{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.dash-card1{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.stats-bars-container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.single-state-bar{
+    font-weight: 500;
+    display: flex;
+    border: 1px solid gray;
+    background-color: #2c3333;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    width: 100%;
+    flex-grow: 1;
+    margin: 15px 0;
+}
+.single-state-bar strong{
+    margin-left: 10px;
 }

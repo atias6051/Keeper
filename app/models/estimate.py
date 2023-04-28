@@ -1,4 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+import json
+
 
 class Estimate(db.Model):
     __tablename__ = 'estimates'
@@ -31,3 +33,21 @@ class Estimate(db.Model):
             'isInvoice': self.is_invoice,
             'customerName': self.customer.name
         }
+
+    def parsed_dict(self):
+        return {
+            'id': self.id,
+            'ownerId': self.owner_id,
+            'companyId': self.company_id,
+            'customerId': self.customer_id,
+            'services': json.loads(self.services),
+            'discount': self.discount,
+            'date': self.date,
+            'isInvoice': self.is_invoice,
+            'customerName': self.customer.name,
+            'total': sum(float(item['price']) * float(item['quantity']) for item in json.loads(self.services).values()) - float(self.discount)
+        }
+
+    def get_total(self):
+        services = json.loads(self.services)
+        return sum(item['price'] * item['quantity'] for item in services.values())
