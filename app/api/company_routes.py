@@ -98,4 +98,4 @@ def delete_company():
 @login_required
 def get_stats():
     comp = Company.query.get(current_user.company_id)
-    return jsonify(comp.stats())
+    return jsonify(comp.stats2())

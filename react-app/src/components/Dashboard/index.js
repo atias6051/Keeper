@@ -2,17 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './index.css'
-import { getCompany } from '../../store/company';
+import { getCompany, getStats } from '../../store/company';
 import TestComp from '../TestComp';
 import { getEstimates } from '../../store/documents';
 import CitiesChart from '../Charts/CitiesChart';
+import Clock from './Clock';
+import SalesRatioCard from './SalesRatioCard';
+import MonthlySalesmeChart from '../Charts/MonthlySalesmenChart';
+import ServicesChart from '../Charts/ServicesChart';
+import PersonalStats from './PersonalStats';
+import AnualSalesChart from '../Charts/AnualSalesChart';
 
 export default function Dashboard(){
     const history = useHistory()
     const user = useSelector(state => state.session.user);
     const company = useSelector(state => state.company.company)
+    const stats = useSelector(state => state.company.stats)
     const dispatch = useDispatch()
-    // const [citiesChartData,setCitiesChartData] = useState(null)
+    const [services,setServices] = useState([])
+    const [salesmen,setSalesmen] = useState([])
+    const [cities,setCities] = useState([])
+    const [serviceChartData, setServiceChartData] = useState({})
 
 
 
@@ -23,108 +33,38 @@ export default function Dashboard(){
         if(user){
             dispatch(getCompany())
             dispatch(getEstimates())
+            dispatch(getStats())
         }
     },[user])
 
-    // useEffect(()=>{
-    //     if(!company) return
-    //     let citiesStats = Object.entries(company.stats.cities_stats).sort((a,b)=>b[1]-a[1]).slice(0,3)
-
-    //     const newData = {
-    //         labels: citiesStats.map(el=>el[0]),
-    //         datasets:[{
-    //             data: citiesStats.map(el=>el[1]),
-    //             backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-    //             hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-    //             // borderWidth: 12,
-    //         }]
-    //     }
-    //     setCitiesChartData(()=>newData)
-    // },[company])
+    useEffect(()=>{
+        if(!stats) return
+        const {serviceStats, citiesStats, salesmenStats} = stats
+        setCities(()=>citiesStats)
+        setSalesmen(()=>salesmenStats)
+        setServices(()=>serviceStats)
+        console.log("stats--->", stats)
+    },[stats])
 
 
-    const UserData = [
-        {
-          id: 1,
-          year: 2016,
-          userGain: 80000,
-          userLost: 823,
-        },
-        {
-          id: 2,
-          year: 2017,
-          userGain: 45677,
-          userLost: 345,
-        },
-        {
-          id: 3,
-          year: 2018,
-          userGain: 78888,
-          userLost: 555,
-        },
-        {
-          id: 4,
-          year: 2019,
-          userGain: 90000,
-          userLost: 4555,
-        },
-        {
-          id: 5,
-          year: 2020,
-          userGain: 4300,
-          userLost: 234,
-        },
-    ];
 
-    const chartData = {
-        labels: UserData.map(el=>el.year),
-        datasets: [{
-            label: "Test Data",
-            data: UserData.map(el=>el.userGain),
-            backgroundColor: ["#2e4f4f"]
-        }]
-    }
-    const chartData2 = {
-        labels: UserData.map(el=>el.year),
-        datasets: [{
-            label: "Test Data",
-            data: UserData.map(el=>el.userGain*Math.random()),
-            backgroundColor: ["#0e8388"]
-        }]
-    }
-    const chartData3 = {
-        labels: UserData.map(el=>el.year),
-        datasets: [{
-            label: "Test Data",
-            data: UserData.map(el=>el.userGain*Math.random()),
-            backgroundColor: ["#656ac7"]
-        }]
-    }
 
-    if(!user) return null
+
+    if(!user || !stats) return null
 
     return(
         <section id="dashboard-section">
-            <h1>{`Welcome ${user.firstName} ${user.lastName}`}</h1>
+            <div className='flex-row-space'>
+                <h1>{`Welcome ${user.firstName} ${user.lastName}`}</h1>
+                <Clock />
+            </div>
             <div id="stats-grid">
-            {/* <div className='test-chart'>
-                <p>Customer City Distribution (Top 3)</p>
-                {citiesChartData && (<CitiesChart chartData={citiesChartData} />) }
-                <CitiesChart chartData={citiesChartData} />
-                <TestComp chartData={chartData2}/>
-            </div> */}
-            <div className='test-chart'>
-                <p>Test data2</p>
-                <TestComp chartData={chartData2}/>
-            </div>
-            <div className='test-chart'>
-                <p>Test data2</p>
-                <TestComp chartData={chartData3}/>
-            </div>
-            <div className='test-chart'>
-                <p>Test data1</p>
-                <TestComp chartData={chartData}/>
-            </div>
+                <PersonalStats stats={stats.salesmenStats.find(el=>el.id === user.id)} />
+                <SalesRatioCard stats={stats.salesmenStats} />
+                <CitiesChart stats={stats.citiesStats} />
+                <MonthlySalesmeChart stats={stats.salesmenStats} />
+                <AnualSalesChart stats={stats.yearSalesStats} />
+                <ServicesChart stats={stats.serviceStats} />
             </div>
         </section>
     )

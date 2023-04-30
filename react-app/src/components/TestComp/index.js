@@ -5,5 +5,5 @@ import {Chart as ChartJs} from 'chart.js/auto'
 
 export default function TestComp({chartData}){
 
-    return <Bar data={chartData}/>
+    return <Bar data={chartData} />
 }
