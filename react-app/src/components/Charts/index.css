@@ -34,3 +34,21 @@
     grid-column: 2/4;
     grid-row: 2;
 }
+
+.loading-card-single{
+    background-color: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    background-image: linear-gradient(-45deg, #dcdcdc 25%, transparent 25%, transparent 50%, #dcdcdc 50%, #dcdcdc 75%, transparent 75%, transparent); /* gray swoosh pattern */
+    background-size: 56.57px 56.57px;
+    animation: swoosh 2s infinite ease-in-out;
+}
+
+@keyframes swoosh {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 56.57px 56.57px; /* move the pattern across the background */
+    }
+  }

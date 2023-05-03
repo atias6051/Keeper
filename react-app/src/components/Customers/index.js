@@ -50,7 +50,7 @@ export default function Customers(){
     // },[customers,singleCustomer,location])
 
 
-
+    if(!customers) return (<div className='loading-wheel'/>)
     return (
         <section id="all-customers">
             <div id="customers-navbar">
