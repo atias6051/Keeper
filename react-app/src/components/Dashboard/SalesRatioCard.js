@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 
 function SalesRatioCard({stats}){
 
+    // console.log("stats--->", stats)
     const [filtered,setFiltered] = useState([])
 
     useEffect(()=>{
@@ -13,10 +14,10 @@ function SalesRatioCard({stats}){
             <h5>Sales Close Rate</h5>
             <ul>
                 {filtered.map((el,i)=>(
-                    <>
-                    <li key={i} className="single-state-bar">{`${el.firstName} ${el.lastName[0].toUpperCase()} - ${el.closeRate}%`}</li>
+                    <div key={i}>
+                    <li className="single-state-bar">{`${el.firstName} ${el.lastName[0].toUpperCase()} - ${el.closeRate}%`}</li>
                     <p>{`Sale/Estimate - ${el.numSales}/${el.numEstimates}`}</p>
-                    </>
+                    </div>
                 ))}
             </ul>
         </div>

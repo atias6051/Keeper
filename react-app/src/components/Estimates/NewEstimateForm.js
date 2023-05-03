@@ -161,7 +161,9 @@ export default function NewEstimateForm({customer}){
             history.push(`/dashboard/estimates/${est.id}`)
         }
     }
-
+    const generateInvoice = () => {
+        console.log("Connected!")
+    }
     // console.log("LOCATION---->", location)
     // console.log("existing form or not?", existing)
     if(!company) return null
@@ -250,7 +252,7 @@ export default function NewEstimateForm({customer}){
                 <div className='estimate-buttons-buttom'>
                 <div>
                     <button className='create-button' onClick={handleSubmit}>Save</button>
-                    {id && !estimate?.isInvoice? <button style={{marginLeft:'5px'}} className='create-button'>Generate Invoice</button>:null}
+                    {id && !estimate?.isInvoice? <button style={{marginLeft:'5px'}} className='create-button' onClick={generateInvoice}>Generate Invoice</button>:null}
                 </div>
                 {id && (
                     <OpenModalButton
