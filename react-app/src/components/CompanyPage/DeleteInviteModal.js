@@ -1,11 +1,9 @@
 import { useModal } from '../../context/Modal';
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import { deleteInvite } from '../../store/invites';
 
 export default function DeleteInviteModal({invite}) {
     const {closeModal} = useModal()
-    const history = useHistory()
     const dispatch = useDispatch()
 
     const handleDelete = async() =>{

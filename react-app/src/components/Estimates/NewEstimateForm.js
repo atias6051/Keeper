@@ -15,7 +15,7 @@ export default function NewEstimateForm({customer}){
     const history = useHistory()
     const location = useLocation()
     const company = useSelector(state=>state.company.company)
-    const services = useSelector(state=>state.service.services)
+    // const services = useSelector(state=>state.service.services)
     const customers = useSelector(state=>state.customer.customers)
     const estimate = useSelector(state=>state.documents.singleDocument)
 
@@ -39,7 +39,9 @@ export default function NewEstimateForm({customer}){
     const [discount,setDiscount] = useState(0)
     const [date,setDate] = useState(new Date().toISOString().slice(0,10))
     const [submitted,setSubmitted] = useState(false)
-    const [created,setCreated] = useState(false)
+    // const [created,setCreated] = useState(false)
+    // const [existing,setExisting] = useState(false)
+    const [title,setTitle] = useState('')
     const [showSavedMessage, setShowSavedMessage] = useState(false);
     const [customerMessage,setCustomerMessage] = useState(false)
 
@@ -48,7 +50,9 @@ export default function NewEstimateForm({customer}){
         if(id){
             dispatch(getSignelDocument(id))
         }
+        // setExisting(()=>location.pathname.split('/').pop() !== 'new')
     },[dispatch,location])
+
 
     useEffect(()=>{
         if(id && estimate && customers){
@@ -57,12 +61,15 @@ export default function NewEstimateForm({customer}){
             setDate(()=> dateForInput(estimate.date))
             setDiscount(()=>estimate.discount)
             setNumServices(()=>Object.keys(estimate.services).length)
+            if(estimate.isInvoice) setTitle(()=> `Invoice #${estimate.id}`)
+            else setTitle(()=> `Estimate #${estimate.id}`)
         }else{
             setCustomerInfo(()=>customer)
             setServiceList(()=>({1:emptyServiceObj}))
             setDate(()=> new Date().toISOString().slice(0,10))
             setDiscount(()=> 0)
             setNumServices(()=> 1)
+            setTitle(()=> 'New Estimate')
         }
     },[id,estimate,location])
 
@@ -155,7 +162,8 @@ export default function NewEstimateForm({customer}){
         }
     }
 
-
+    // console.log("LOCATION---->", location)
+    // console.log("existing form or not?", existing)
     if(!company) return null
 
     return (
@@ -170,7 +178,7 @@ export default function NewEstimateForm({customer}){
                     </span>
                 </div>
                 <div className='title-div'>
-                    <p>New Estimate</p>
+                    <p>{title}</p>
                     <div className={`saved-div-abs ${showSavedMessage ? 'show' : ''}`}>Saved!</div>
                 </div>
                 <div id="estimate-customer-info">
@@ -240,8 +248,10 @@ export default function NewEstimateForm({customer}){
                     <p>{`Total: `}<strong>${total}</strong></p>
                 </div>
                 <div className='estimate-buttons-buttom'>
-
-                <button className='create-button' onClick={handleSubmit}>Save</button>
+                <div>
+                    <button className='create-button' onClick={handleSubmit}>Save</button>
+                    {id && !estimate?.isInvoice? <button style={{marginLeft:'5px'}} className='create-button'>Generate Invoice</button>:null}
+                </div>
                 {id && (
                     <OpenModalButton
                     modalComponent={

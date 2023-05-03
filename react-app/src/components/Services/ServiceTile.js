@@ -9,11 +9,6 @@ export default function ServiceTile({service}){
     const history = useHistory()
     const modalOpener = () => {
         return history.push(`/dashboard/services/${service.id}`)
-        // setModalContent(<SingleServiceModal service={service}/>);
-    }
-    const handleDelete = e =>{
-        e.stopPropagation()
-        console.log("HFFGFSSDF")
     }
 
     return(

@@ -28,6 +28,7 @@ export default function AnualSalesChart({stats}){
         }
         setChartData(()=>newData)
     },[stats])
+
     if(!chartData) return null
     return (
         <div className='cities-stats-card sales-2fr-card'>

@@ -28,10 +28,7 @@ export default function InviteSignupModal({invite}){
 
     const handleSubmit = async e => {
         setSubmitted(()=>true)
-        console.log("TATATATTTA")
-        console.log(validationsObj)
         if(validationsObj.errors) return
-        // if(validationsObj.errors) return
         const payload = {
             first_name: invite.firstName,
             last_name: invite.lastName,

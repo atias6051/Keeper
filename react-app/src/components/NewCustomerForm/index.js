@@ -30,7 +30,6 @@ export default function NewCustomerForm(){
         setSubmitted(()=>true)
         if(validationErrors.errors) return
         const newCustomer = await dispatch(createCustomer(infoObj))
-        console.log("new customer---->",newCustomer)
         return history.push(`/dashboard/customers/${newCustomer.id}`)
     }
 

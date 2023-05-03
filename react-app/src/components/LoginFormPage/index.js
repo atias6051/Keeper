@@ -19,7 +19,6 @@ function LoginFormPage() {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     const test = await data.json()
-    console.log("asdasdsadda----->",test)
     if (data) {
       setErrors(data);
     }

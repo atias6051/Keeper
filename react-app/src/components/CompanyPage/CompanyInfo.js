@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Switch, Route, useHistory, useLocation } from 'react-router-dom';
-import { getInvites } from '../../store/invites';
-import Customers from '../Customers';
 import { companyValidations } from '../../utils/formValidations';
 import './index.css'
 import { updateCompanyInfo } from '../../store/company';
@@ -10,9 +7,9 @@ import { useModal } from '../../context/Modal';
 import LogoChangeModal from './LogoChangeModal';
 
 export default function CompanyInfo(){
-    const history = useHistory()
-    const { setModalContent, setOnModalClose } = useModal();
-    const user = useSelector(state=>state.session.user)
+    // const history = useHistory()
+    const { setModalContent } = useModal();
+    // const user = useSelector(state=>state.session.user)
     const company = useSelector(state=>state.company.company)
     const dispatch = useDispatch()
     const [companyInfo,setCompanyInfo] = useState({
@@ -50,7 +47,7 @@ export default function CompanyInfo(){
             setChanged(()=>false)
         }
         setValidationErrors(()=>companyValidations(companyInfo))
-    },[companyInfo])
+    },[companyInfo,ogState])
 
     const handleChange = e => {
         let newObj = {
@@ -71,7 +68,6 @@ export default function CompanyInfo(){
     const handleSubmit = async(e)=> {
         setSubmitted(()=>true)
         if(validationErrors.errors) return
-        console.log("good to submit!")
         let newObj = {...companyInfo,logo_url:companyInfo.logoUrl}
         await dispatch(updateCompanyInfo(newObj))
         setOgState(()=>companyInfo)
@@ -86,7 +82,7 @@ export default function CompanyInfo(){
                 <div>
                     <div className='logo-info-container'>
                         <p>Logo</p>
-                        <img id="info-page-logo" src={companyInfo.logoUrl} />
+                        <img id="info-page-logo" src={companyInfo.logoUrl} alt="company_logo"/>
                         <button onClick={handleLogoChange}className='hov' id="change-logo-button" >Chnage logo url</button>
                     </div>
                 </div>

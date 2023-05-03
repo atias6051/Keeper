@@ -37,7 +37,6 @@ export default function EditInviteModal({invite}) {
             email: inviteObj.email,
             id: invite.id
         }
-        console.log(updatedObj)
         await dispatch(editInvite(updatedObj))
         closeModal()
     }
