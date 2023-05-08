@@ -1,5 +1,4 @@
 import {Bar} from "react-chartjs-2";
-import {Chart as ChartJs} from 'chart.js/auto'
 import { useEffect,useState } from "react";
 import './index.css'
 export default function MonthlySalesmeChart({stats}){

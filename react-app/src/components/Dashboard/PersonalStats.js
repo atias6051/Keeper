@@ -1,6 +1,5 @@
 import './index.css'
 export default function PersonalStats({stats}){
-    console.log("statsssss",stats)
     return (
         <div className='cities-stats-card'>
             <h4>Personal Monthly Stats</h4>

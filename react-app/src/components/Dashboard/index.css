@@ -27,7 +27,7 @@
     display: grid;
     gap: 15px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 2fr ;
+    grid-template-rows: 2fr 2fr 1fr;
 }
 
 .flex-row-space{
@@ -59,4 +59,9 @@
 }
 .single-state-bar strong{
     margin-left: 10px;
+}
+
+.grid-filler{
+    height: 10vh;
+    /* background-color: red; */
 }

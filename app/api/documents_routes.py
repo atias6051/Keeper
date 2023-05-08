@@ -44,6 +44,19 @@ def update_single_doc(id):
     db.session.commit()
     return jsonify(estimate.to_dict())
 
+@documents_routes.route('/<int:id>/invoice',methods=['POST'])
+@login_required
+def update_to_invoice(id):
+    estimate = db.session.query(Estimate).filter_by(id=id).first()
+    if not estimate:
+        return jsonify({"message":"Estimate not found","statuscode":404}),404
+    if estimate.company_id != current_user.company_id:
+        return jsonify({"message":"Estimate is not in your company data","statuscode":404}),404
+    if estimate.is_invoice:
+        return jsonify({"message":"Document is already invoiced","statuscode":404}),404
+    estimate.is_invoice = True
+    db.session.commit()
+    return jsonify(estimate.to_dict())
 
 @documents_routes.route('/estimates')
 @login_required

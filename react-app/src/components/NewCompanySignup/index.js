@@ -56,7 +56,6 @@ export default function NewCompanySignup(){
     }
 
     const handleSubmit = async(e) => {
-        console.log(signupObj)
         setSubmitted(()=>true)
         if(validationErrors.errors) return
         const submitObj = {

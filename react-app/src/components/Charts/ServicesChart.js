@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {Doughnut} from "react-chartjs-2";
-import {Chart as ChartJs} from 'chart.js/auto'
-import { useSelector } from 'react-redux';
 import './index.css'
 
 
 export default function ServicesChart({stats}){
-    // citiesStats = useSelector(state=>state.company.company.stats)
-    // console.log("stats for cities!->",stats)
+
     const [filtered,setFiltered] = useState([])
     const [chartData,setChartData] = useState(null)
 

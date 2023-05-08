@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {Doughnut} from "react-chartjs-2";
-import {Chart as ChartJs} from 'chart.js/auto'
-import { useSelector } from 'react-redux';
 import './index.css'
 
 

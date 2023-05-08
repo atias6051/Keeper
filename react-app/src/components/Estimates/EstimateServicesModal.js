@@ -19,7 +19,6 @@ export default function EstimateServicesModal({serviceFiller,setServiceFiller,se
     }, [])
 
     const pickService = (e,serviceName) => {
-        console.log("***",services.find(el=>el.name === serviceName))
         const pickedService = services.find(el=>el.name === serviceName)
         setServiceFiller(()=>({key: serviceNumber, serviceInfo: pickedService}))
         closeModal()
