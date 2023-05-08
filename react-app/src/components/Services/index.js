@@ -29,7 +29,7 @@ export default function Services(){
       return new RegExp(term, 'gi').test(el)
     }
 
-    if(!services) return null
+    if(!services) return (<div className='loading-wheel'/>)
     return (
         <section id="all-services">
             <div id="services-navbar">

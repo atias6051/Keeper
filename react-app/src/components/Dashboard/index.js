@@ -11,6 +11,7 @@ import MonthlySalesmeChart from '../Charts/MonthlySalesmenChart';
 import ServicesChart from '../Charts/ServicesChart';
 import PersonalStats from './PersonalStats';
 import AnualSalesChart from '../Charts/AnualSalesChart';
+import LoadingDash from './LoadingDash';
 
 export default function Dashboard(){
     const history = useHistory()
@@ -48,7 +49,7 @@ export default function Dashboard(){
 
 
 
-    if(!user || !stats) return null
+    if(!user) return null
 
     return(
         <section id="dashboard-section">
@@ -56,17 +57,19 @@ export default function Dashboard(){
                 <h1>{`Welcome ${user.firstName} ${user.lastName}`}</h1>
                 <Clock />
             </div>
-            <div id="stats-grid">
-                <PersonalStats stats={stats.salesmenStats.find(el=>el.id === user.id)} />
-                <SalesRatioCard stats={stats.salesmenStats} />
-                <CitiesChart stats={stats.citiesStats} />
-                <MonthlySalesmeChart stats={stats.salesmenStats} />
-                <AnualSalesChart stats={stats.yearSalesStats} />
-                <ServicesChart stats={stats.serviceStats} />
-                <div className='grid-filler'></div>
-                <div className='grid-filler'></div>
-                <div className='grid-filler'></div>
-            </div>
+            {stats? (
+                <div id="stats-grid">
+                    <PersonalStats stats={stats.salesmenStats.find(el=>el.id === user.id)} />
+                    <SalesRatioCard stats={stats.salesmenStats} />
+                    <CitiesChart stats={stats.citiesStats} />
+                    <MonthlySalesmeChart stats={stats.salesmenStats} />
+                    <AnualSalesChart stats={stats.yearSalesStats} />
+                    <ServicesChart stats={stats.serviceStats} />
+                    <div className='grid-filler'></div>
+                    <div className='grid-filler'></div>
+                    <div className='grid-filler'></div>
+                </div>
+            ):(<LoadingDash />)}
         </section>
     )
 }
