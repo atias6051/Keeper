@@ -1,0 +1,22 @@
+.single-service-grid{
+    margin: 3px 0;
+    border: 1px solid black;
+}
+.single-service-grid__top-row{
+    display: flex;
+}
+.single-service-grid__top-row p{
+    border: 1px solid gray;
+    padding: 5px;
+}
+.service-name{
+    width: 40vw;
+}
+.width-spacer{
+    width: 15vw;
+}
+.description-box{
+    border: 1px solid gray;
+    padding: 5px;
+    min-height: 10vh;
+}
