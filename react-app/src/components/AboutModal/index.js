@@ -3,7 +3,6 @@ import { useModal } from "../../context/Modal";
 import './AboutModal.css'
 function AboutModal(){
     const {closeModal} = useModal()
-
     return(
         <div className="about-section">
             <div onClick={closeModal} className="close-button hov"><i class="fa-solid fa-x"></i></div>

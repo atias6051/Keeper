@@ -62,7 +62,7 @@ def update_to_invoice(id):
 @login_required
 def get_estimates():
     estimates = Estimate.query.filter(Estimate.company_id == current_user.company_id).order_by(Estimate.date).all()
-    return jsonify([est.to_dict() for est in estimates])
+    return jsonify([est.parsed_dict() for est in estimates])
 
 @documents_routes.route('/estimates',methods=['POST'])
 @login_required
