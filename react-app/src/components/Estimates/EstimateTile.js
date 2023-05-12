@@ -8,7 +8,7 @@ export default function EstimateTile({estimate}){
             <p className='bold-t'>{estimate.customerName}</p>
             <p>{estimate.date}</p>
             </div>
-            <p>${estimate.total}</p>
+            <p>${estimate.total.toFixed(2)}</p>
         </div>
     )
 }
