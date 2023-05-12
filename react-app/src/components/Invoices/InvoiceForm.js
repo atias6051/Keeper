@@ -18,8 +18,8 @@ export default function InvoiceForm(){
     },[dispatch])
 
     useEffect(()=>{
-        console.log("6666--->",estimate.services)
-        if(estimate){
+        if(estimate && customers){
+            console.log("6666--->",estimate.services)
             setCustomerInfo(()=>customers.find(el=>el.id===estimate.customerId))
         }
     },[estimate])
@@ -53,8 +53,14 @@ export default function InvoiceForm(){
             </div>
             <div className='estimate-services'>
                 {Object.values(estimate.services).map((el,i)=>(
-                    <div key={i} className='single-service-container'>
-                        <p>{el.name}</p>
+                    <div key={i} className='single-service-grid'>
+                        <div className='single-service-grid__top-row'>
+                            <p className='service-name'>{el.name}</p>
+                            <p className='width-spacer'>{`Quantity: ${el.quantity}`}</p>
+                            <p className='width-spacer'>{`Price: ${el.price}`}</p>
+                            <p className='width-spacer'>{`Total: ${(el.price*el.quantity).toFixed(2)}`}</p>
+                        </div>
+                        <p className='description-box'>{el.description}</p>
                     </div>
                 ))}
             </div>
