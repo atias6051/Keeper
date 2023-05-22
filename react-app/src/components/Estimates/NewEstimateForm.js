@@ -6,7 +6,7 @@ import { formatNumString } from '../../utils/general';
 import OpenModalButton from '../OpenModalButton';
 import EstimateCustomerModal from './EstimateCustomerModal';
 import EstimateServicesModal from './EstimateServicesModal';
-import { postEstimate,getSignelDocument, updateEstimate } from '../../store/documents';
+import { postEstimate,getSignelDocument, updateEstimate, convertToInvoice } from '../../store/documents';
 import './index.css'
 import DeleteEstimateModal from './DeleteEstimateModal';
 
@@ -161,11 +161,13 @@ export default function NewEstimateForm({customer}){
             history.push(`/dashboard/estimates/${est.id}`)
         }
     }
-    const generateInvoice = () => {
+    const generateInvoice = async () => {
         console.log("Connected!")
+        console.log(id)
+        await dispatch(convertToInvoice(id))
+        history.push(`/dashboard/invoices/${id}`)
     }
-    // console.log("LOCATION---->", location)
-    // console.log("existing form or not?", existing)
+
     if(!company) return null
 
     return (

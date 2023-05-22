@@ -98,15 +98,21 @@ export const deleteEstimate = id => async(dispatch) => {
     }
 }
 
+export const convertToInvoice = id => async dispatch => {
+    const res = await fetch(`/api/documents/${id}/invoice`, {
+        method: "POST",
+        headers:{"Content-Type":"application/json"}
+    })
+    if(res.ok){
+        dispatch(getEstimates())
+    }
+}
+
 const initialState = {estimates:null, invoices:null, singleDocument:null}
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
         case SET_ESTIMATES:
-            // let parsed = action.payload.map(el=>({...el,services:JSON.parse(el.services)}))
-            // .map(est=> ({...est,total: sumTotal(est.services)-est.discount}))
-            // let estimates = parsed.filter(el=>!el.isInvoice)
-            // let invoices = parsed.filter(el=>el.isInvoice)
             let estimates = []
             let invoices = []
             action.payload.forEach(el => el.isInvoice? invoices.push(el): estimates.push(el));
