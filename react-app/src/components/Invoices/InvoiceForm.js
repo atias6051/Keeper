@@ -12,6 +12,7 @@ export default function InvoiceForm(){
     const customers = useSelector(state=>state.customer.customers)
 
     const [customerInfo,setCustomerInfo] = useState(null)
+    const [total,setTotal] = useState(0)
 
     useEffect(()=>{
         dispatch(getSignelDocument(id))
@@ -19,8 +20,10 @@ export default function InvoiceForm(){
 
     useEffect(()=>{
         if(estimate && customers){
-            console.log("6666--->",estimate.services)
+            console.log("6666--->",estimate)
             setCustomerInfo(()=>customers.find(el=>el.id===estimate.customerId))
+            setTotal(()=> Object.values(estimate.services).reduce((acc,el)=> acc+el.quantity*el.price,0))
+            // console.log()
         }
     },[estimate])
 
@@ -28,7 +31,7 @@ export default function InvoiceForm(){
         console.log("customer info- -->",customerInfo)
     },[customerInfo])
 
-    if(!estimate || !company || !customerInfo) return (<div>loadind!</div>)
+    if(!estimate || !company || !customerInfo) return (<div>loading!</div>)
     return (
         <div className='tile-display'>
             <div className='eastimate-top-info'>
@@ -63,6 +66,10 @@ export default function InvoiceForm(){
                         <p className='description-box'>{el.description}</p>
                     </div>
                 ))}
+            </div>
+            <div className='invoice-totals'>
+                    <p>{estimate.discount}</p>
+                    <p>{`$${total}`}</p>
             </div>
         </div>
     )
