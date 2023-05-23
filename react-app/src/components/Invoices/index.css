@@ -1,4 +1,6 @@
 .single-service-grid{
+    font-size: 1rem;
+    font-weight: 500;
     margin: 3px 0;
     border: 1px solid black;
 }
