@@ -162,8 +162,8 @@ export default function NewEstimateForm({customer}){
         }
     }
     const generateInvoice = async () => {
-        console.log("Connected!")
-        console.log(id)
+        // console.log("Connected!")
+        // console.log(id)
         await dispatch(convertToInvoice(id))
         history.push(`/dashboard/invoices/${id}`)
     }
