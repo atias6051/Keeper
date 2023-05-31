@@ -143,6 +143,12 @@ export default function NewEstimateForm({customer}){
             return
         }
         if(JSON.stringify(serviceList) === JSON.stringify({1:emptyServiceObj})) return
+
+        //continue here!
+        let newServices = Object.values(serviceList).filter(el=> el.id === null)
+        // console.log(newServices)
+        // console.log(serviceList)
+        // if(newServices) return
         const estimateObj = {
             customerId: customerInfo.id,
             services: JSON.stringify(serviceList),
@@ -162,8 +168,6 @@ export default function NewEstimateForm({customer}){
         }
     }
     const generateInvoice = async () => {
-        // console.log("Connected!")
-        // console.log(id)
         await dispatch(convertToInvoice(id))
         history.push(`/dashboard/invoices/${id}`)
     }

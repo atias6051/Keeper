@@ -68,8 +68,9 @@ export default function InvoiceForm(){
                 ))}
             </div>
             <div className='invoice-totals'>
-                    <p>{estimate.discount}</p>
-                    <p>{`$${total}`}</p>
+                    <p><strong>Subtotal: </strong>{`$${total+estimate.discount}`}</p>
+                    <p><strong>Discount: </strong>{estimate.discount}</p>
+                    <p><strong>Price: </strong>{`$${total}`}</p>
             </div>
         </div>
     )

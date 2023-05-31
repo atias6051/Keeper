@@ -38,12 +38,13 @@ function Clock() {
     return `${hours}:${minutes}:${seconds} ${ampm}`;
   };
 
-  return <div style={{display: "flex",gap: "5px"}}>
-    {/* <p>{formatTime(time)}</p> */}
-    <p>{date}</p>
-    <p>{time}</p>
-    <p>{ampm}</p>
-    </div>;
+  return (
+    <div style={{display: "flex",gap: "5px"}}>
+      <p>{date}</p>
+      <p>{time}</p>
+      <p>{ampm}</p>
+    </div>
+  )
 }
 
 export default Clock
