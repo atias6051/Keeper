@@ -9,6 +9,7 @@ import EstimateServicesModal from './EstimateServicesModal';
 import { postEstimate,getSignelDocument, updateEstimate, convertToInvoice } from '../../store/documents';
 import './index.css'
 import DeleteEstimateModal from './DeleteEstimateModal';
+import { createService } from '../../store/service';
 
 export default function NewEstimateForm({customer}){
     const {id} = useParams()
@@ -144,14 +145,22 @@ export default function NewEstimateForm({customer}){
         }
         if(JSON.stringify(serviceList) === JSON.stringify({1:emptyServiceObj})) return
 
-        //continue here!
-        let newServices = Object.values(serviceList).filter(el=> el.id === null)
-        // console.log(newServices)
-        // console.log(serviceList)
-        // if(newServices) return
+        let newServices = Object.entries(serviceList).filter(el=> el[1].id === null)
+
+        const serviceListObj = {...serviceList}
+        newServices.forEach(async el => {
+            const {name,price,description} = el[1]
+            const {id} = await dispatch(createService({
+                name: name,
+                price: parseFloat(price).toFixed(2),
+                description: description
+            }))
+            serviceListObj[el[0]].id = id
+        })
+
         const estimateObj = {
             customerId: customerInfo.id,
-            services: JSON.stringify(serviceList),
+            services: JSON.stringify(serviceListObj),
             discount: discount,
             date: formatDate(date)
         }
